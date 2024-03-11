@@ -90,9 +90,9 @@
 
 <!-- materia prima, material de empaque -->
 <div class="container mt-3 p-3">
-    <div class="row">
+    <div class="row d-flex justify-content-around border">
 
-        <div class="col-sm-12 col-md-6 col-lg-3 border p-3">
+        <div class="col-sm-12 col-md-6 col-lg-3  p-3">
             <div class="form-check">
                 <input class="form-check-input p-2" type="checkbox" value="" id="materia_prima">
                 <label class="form-check-label h5" for="materia_prima">
@@ -101,29 +101,11 @@
               </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-3 border p-3">
+        <div class="col-sm-12 col-md-6 col-lg-3  p-3">
             <div class="form-check">
                 <input class="form-check-input p-2" type="checkbox" value="" id="material_empaque">
                 <label class="form-check-label h5" for="material_empaque">
                     Material de Empaque
-                </label>
-              </div>
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-3 border p-3">
-            <div class="form-check">
-                <input class="form-check-input p-2" type="checkbox" value="" id="producto_terminado">
-                <label class="form-check-label h5" for="producto_terminado">
-                    Producto Terminado
-                </label>
-              </div>
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-3 border p-3">
-            <div class="form-check">
-                <input class="form-check-input p-2" type="checkbox" value="" id="otros">
-                <label class="form-check-label h5" for="otros">
-                    Otros
                 </label>
               </div>
         </div>
@@ -186,29 +168,32 @@
 <!-- lote y cantidad -->
 
 <div class="container mt-4 border">
-    <div class="row p-3 justify-content-around">
-        <div class="col-sm-12 col-md-5  col-lg-3">
+    <div class="row p-3 d-flex justify-content-center">
+
+        <div class="col-sm-12 col-md-5  col-lg-3 mt-3">
             <div class="row">
-                <div class="col-auto">
+                <div class="col-4">
                     <span class="fw-bold">Lote: </span>
                 </div>
-                <div class="col-auto">
+                <div class="col-6">
                     <span>Numero del lote</span>
                 </div>
             </div>
         </div>
-        <div class=" col-sm-12 col-md-2 col-lg-6">
-            <!-- es para ocupar un espacio entre lote y cantidad -->
-        </div>
 
-        <div class="col-sm-12 col-md-5  col-lg-3">
+
+
+
+        <div class="col-sm-12 col-md-5  col-lg-3 mt-3">
             <div class="row">
-                <div class="col-auto">
+                <div class="col-4">
                     <span class="fw-bold">Cantidad: </span>
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-5">
+
+                <div class="col-sm-4 col-md-4 col-lg-5 p-0">  
                     <input type="text" class="form-control form-control-sm">
                 </div>
+
             </div>
         </div>        
 
