@@ -28,18 +28,21 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-12 bg-light p-4">
+
+
+@foreach ($users as $user)
+                
                 <div class="row p-3 resizeable-table mt-1"> 
-
                     <div class="col-3 p-2">
-                    <h6 class="mt-2">ING. EFRAIN LÓPEZ MERINO</h6>
+                        <h6 class="mt-2">{{$user->nombre_completo}}</h6>
                     </div>
 
                     <div class="col-3 p-2">
-                    <h6 class="mt-2"> CALIDAD </h6>
+                        <h6 class="mt-2"> {{$user->area}} </h6>
                     </div>
 
                     <div class="col-3 p-2">
-                        <h6 class="mt-2">efrain.rojas@grupopabsa.com</h6>
+                        <h6 class="mt-2">{{$user->email}}</h6>
                     </div>
 
                     <div class="col-3 p-2 text-end">
@@ -56,8 +59,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-        </div>
+                </div> 
+
+@endforeach
+
+
+
+
+
+
+         </div>
     </div>
 </div>
 <!-- PANEL PARA MOSTRAR LA TABLA CON LOS RESULTADOS DE LA BUSQUEDA -->

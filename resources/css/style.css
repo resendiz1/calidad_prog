@@ -81,3 +81,21 @@ a{
 .tiempo{
     transition: all 0.3s ease;
 }
+
+
+
+/* para el ojito de la contraseña */
+.field-icon {
+    float: right;
+    margin-right: 10px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .input-group-append {
+    position: relative;
+    z-index: 3;
+  }
+/* para el ojito de la contraseña */
+    
