@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('fmp', function (Blueprint $table) {
             $table->id();
+            //folios para las tres plantas
+            $table->integer('folio_p1')->default(0)->nullable();
+            $table->integer('folio_p2')->default(0)->nullable();
+            $table->integer('folio_p3')->default(0)->nullable(); 
+            //folios para las tres plantas
             //datos que lleva el fomulario del formato
             $table->string('planta');
             $table->string('folio');

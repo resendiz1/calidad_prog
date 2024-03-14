@@ -180,14 +180,32 @@ class Controlador extends Controller
     }
 
     public function fmp_agregar(){
-        //hay que generar el folio tomando los 
-        $mas_alto = DB::select("SELECT MAX(id) as id  FROM users");
-        $folio = $mas_alto[0]->id + 1;
+
+        //
+        $planta = Auth::user()->planta;
+
+        if($planta == 1){
+            $mas_alto = DB::select("SELECT MAX(folio_p1) as id  FROM fmp");
+            $folio = "PL1-0".$mas_alto[0]->id + 1;
+        }
+
+        if($planta == 2){
+            $mas_alto = DB::select("SELECT MAX(folio_p2) as id  FROM fmp");
+            $folio = "PL2-0".$mas_alto[0]->id + 1;
+        }
+
+        if($planta == 3){
+            $mas_alto = DB::select("SELECT MAX(folio_p3) as id  FROM fmp");
+            $folio = "PL3-0".$mas_alto[0]->id + 1;
+        }
+        
+        $folio; //ya tenemos el folio para los formatos
 
 
+        
+        return request();
 
 
-        return $folio;
     }
 
 

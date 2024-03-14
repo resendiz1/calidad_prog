@@ -634,7 +634,7 @@
                 <h4>SUPERVISO MUESTREO</h4>
               </div>
               <div class="col-12 text-center">
-                <select class="text-center form-select mt-1 form-control p-1">
+                <select class="text-center form-select mt-1 form-control p-1" name="superviso_muestreo" >
                   @foreach ($usuarios_planta as $usuario)
                     <option value="{{$usuario->nombre_completo}}">{{$usuario->nombre_completo}}</option>
                   @endforeach
