@@ -1,3 +1,12 @@
+/* el boton de regresar con el color de pabsa */
+.pabsa-btn{
+    background-color: #FF5733;
+    color: white;
+    font-weight: bold;
+  }
+/* el boton de regresar con el color de pabsa */
+
+
 
 .centrar-verticalmente{
     display:flex;
@@ -28,7 +37,6 @@ small{
 body{
     background-image: url(../img/fondo.webp) ;
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
     padding: 0;
 }
@@ -81,3 +89,5 @@ a{
 .tiempo{
     transition: all 0.3s ease;
 }
+
+

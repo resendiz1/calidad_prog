@@ -7,7 +7,7 @@
         </div>
 
        <div class="col-sm-12 col-md-12 col-lg-8 d-flex align-items-center">
-        <a href="#" class="mx-auto"> <i class="fa fa-arrow-left"> </i> Regresar</a>
+   
        </div>  <!--  Para que haga espacio -->
 
        <div class="col-sm-6 col-md-4 col-lg-2 mt-2">

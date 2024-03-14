@@ -14,16 +14,21 @@ Route::view('/admin/editar_usuario','admin.editar_usuario');
 
 
 
-Route::view('/user', 'user.perfil');
+
 Route::view('/user/fmp', 'user.fmp_rellenar');
 
-Route::view('/user/fmp_por_revisar', 'user.fmp_por_revisar');
+Route::view('/user/fmp_por_revisar', 'user.fmp_por_revisar')->name('por_revisar');
 Route::view('/user/fpnc', 'user.fpnc_rellenar');
 Route::view('/buscador_fmp', 'buscador_fmp');
 Route::view('/encontrado', 'fmp_encontrado');
 Route::view('/user/fmp_pendientes_revisar', 'user.tabla_fmp_por_revisar');
 Route::view('/user/fmp_enviados_revision', 'user.tabla_fmp_enviados_revision');
 Route::view('/user/fmp_enviado_revision', 'user.fmp_enviado_revision');
+Route::view('/admin/eliminar', 'admin.eliminar_usuario');
+
+
+
+
 
 
 //Rutas reales 
@@ -38,4 +43,16 @@ Route::post('/admin/agregar_usuario', [Controlador::class, 'agregar_usuario'])->
 
 //rutas para gestionar usuarios
 Route::get('/admin/administrar_usuarios', [Controlador::class, 'lista_usuarios'])->name('lista.usuarios');
+Route::post('/admin/administrar_usuarios', [Controlador::class, 'lista_buscados'])->name('lista.buscados');
+Route::get('/admin/administrar_usuarios/{usuario}/editar', [Controlador::class, 'editar_usuarios'] )->name('editar.usuarios');
+Route::patch('/admin/administrar_usuarios/{usuario}/editar',[Controlador::class, 'usuarios_update']  )->name('usuarios.update');
+Route::get('/admin/administrar_usuarios/{usuario}/eliminar', [Controlador::class, 'eliminar_usuario'])->name('eliminar.usuario');
+Route::delete('/admin/administrar_usuarios/{usuario}/eliminar/destroy',[Controlador::class, 'usuario_destruir'])->name('usuario.destruir');
 
+
+
+
+//Rutas del usuario
+Route::view('/user', 'user.perfil')->name('user.perfil');
+Route::get('/user/fmp', [Controlador::class, 'fmp_rellenar'])->name('fmp.rellenar');
+Route::post('/user/fmp/agregar', [Controlador::class, 'fmp_agregar'])->name('fmp.agregar');

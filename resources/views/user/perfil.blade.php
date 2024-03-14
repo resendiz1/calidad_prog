@@ -9,7 +9,7 @@
     <div class="row mt-5 justify-content-around">
 
     <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
-        <a href="formato_a_llenar.html">
+        <a href="{{route('fmp.rellenar')}}">
             <div class="row">
                 <div class="col-12">
                     <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/070/01</h5>
@@ -37,7 +37,7 @@
 
 
         <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5">
-            <a href="por_revisar.html">
+            <a href="{{route('por_revisar')}}">
                 <div class="row">
                     <div class="col-12">
                         <h5 class="mx-auto">FORMATOS POR REVISAR</h5>
