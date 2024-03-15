@@ -20,9 +20,8 @@ Route::view('/user/fmp', 'user.fmp_rellenar');
 Route::view('/user/fmp_por_revisar', 'user.fmp_por_revisar')->name('por_revisar');
 Route::view('/user/fpnc', 'user.fpnc_rellenar');
 Route::view('/buscador_fmp', 'buscador_fmp');
-Route::view('/encontrado', 'fmp_encontrado');
+Route::view('/encontrado', 'fmp_lleno');
 Route::view('/user/fmp_pendientes_revisar', 'user.tabla_fmp_por_revisar');
-Route::view('/user/fmp_enviados_revision', 'user.tabla_fmp_enviados_revision');
 Route::view('/user/fmp_enviado_revision', 'user.fmp_enviado_revision');
 Route::view('/admin/eliminar', 'admin.eliminar_usuario');
 
@@ -55,4 +54,7 @@ Route::delete('/admin/administrar_usuarios/{usuario}/eliminar/destroy',[Controla
 //Rutas del usuario
 Route::view('/user', 'user.perfil')->name('user.perfil');
 Route::get('/user/fmp', [Controlador::class, 'fmp_rellenar'])->name('fmp.rellenar');
-Route::post('/user/fmp/agregar', [Controlador::class, 'fmp_agregar'])->name('fmp.agregar');
+Route::post('/user/fmp/agregar/', [Controlador::class, 'fmp_agregar'])->name('fmp.agregar');
+Route::get('/user/fmp/generados', [Controlador::class, 'fmp_generados'])->name('fmp.generados');
+Route::get('/user/fmp/generados/{fmp}/llenos', [Controlador::class, 'fmp_lleno'])->name('fmp.lleno');
+

@@ -23,10 +23,10 @@
 
 
         <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5">
-            <a href="busqueda.html">
+            <a href="{{route('fmp.generados')}}">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mx-auto">BUSCAR DOCUMENTOS</h5>
+                        <h5 class="mx-auto">DOCUMENTOS GENERADOS</h5>
                     </div>
                     <div class="col-12">
                         <i class="fa-solid fa-magnifying-glass fa-3x mt-3"></i>
@@ -58,7 +58,24 @@
 
 
 
+{{-- alertas de que el usurio se agrego con exito o que hubo un error se desaparecen en 3 segundos--}}
+@if (session('creado'))
+    <script>
+         window.addEventListener('load', function(){
+            Swal.fire({
+                title: "Hecho",
+                text:  "{{session('creado')}}",
+                icon: "success"
+            });
 
+            setTimeout(function(){
+                window.location.replace(window.location.href);
+            }, 3500);
+         });
+        
+    </script>
+ 
+@endif
 
 
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Fmp;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Request;
-use Carbon\Carbon;
 
 class Controlador extends Controller
 {
@@ -187,26 +188,132 @@ class Controlador extends Controller
         if($planta == 1){
             $mas_alto = DB::select("SELECT MAX(folio_p1) as id  FROM fmp");
             $folio = "PL1-0".$mas_alto[0]->id + 1;
+            $folio_planta = 'folio_p1';
+            $consecutivo = $mas_alto[0]->id + 1;
+
         }
+
+
 
         if($planta == 2){
             $mas_alto = DB::select("SELECT MAX(folio_p2) as id  FROM fmp");
             $folio = "PL2-0".$mas_alto[0]->id + 1;
+            $folio_planta = 'folio_p2';
+            $consecutivo = $mas_alto[0]->id +1;
+
         }
+
+
+
 
         if($planta == 3){
             $mas_alto = DB::select("SELECT MAX(folio_p3) as id  FROM fmp");
             $folio = "PL3-0".$mas_alto[0]->id + 1;
+            
+            $folio_planta = 'folio_p3'; //igualo la variable al nombre de la columna que se va a utilizar
+
+            $consecutivo = $mas_alto[0]->id + 1; //obtengo el folio mas alto y le sumo uno ara tener el folio que voy a asignar
+
         }
         
-        $folio; //ya tenemos el folio para los formatos
 
-
+        //validando los datos obligatorios
+        request()->validate([
+            'hora_recepcion' => 'required',
+            'lote' => 'required',
+            'operador' => 'required',
+            'placas_transporte' => 'required',
+            'placas_caja' => 'required',
+            'hora_entrada_laboratorio' => 'required',
+            'hora_liberacion' => 'required'
+        ]);
         
-        return request();
+
+
+        $fmp = new Fmp();
+        $fmp->$folio_planta = $consecutivo;
+        $fmp->planta = request('planta');
+        $fmp->folio = $folio;
+        $fmp->fecha = request('fecha');
+        $fmp->hora_recepcion = request('hora_recepcion');
+        $fmp->producto = request('producto');
+        $fmp->proveedor = request('proveedor');
+        $fmp->lote = request('lote');
+        $fmp->linea_transportista = request('linea_transportista');
+        $fmp->nombre_operador = request('operador');
+        $fmp->placas_transporte = request('placas_transporte');
+        $fmp->placas_caja = request('placas_caja');
+        $fmp->hora_entrada_lab = request('hora_entrada_laboratorio');
+        $fmp->hora_liberacion = request('hora_liberacion');
+        $fmp->humedad = request('humedad');
+        $fmp->temperatura = request('temperatura');
+        $fmp->peso_especifico = request('peso_especifico');
+        $fmp->grano_maltratado = request('grano_maltratado');
+        $fmp->grano_quebrado = request('grano_quebrado');
+        $fmp->impurezas = request('impurezas');
+        $fmp->cantidad_muestra = request('cantidad_muestra');
+        $fmp->bx = request('bx');
+        $fmp->plagas = request('plagas');
+        $fmp->certificado_calidad = request('certificado_calidad');
+        $fmp->fluorecencia = request('fluorecencia');
+        $fmp->asegurado = request("asegurado");
+        $fmp->color_olor_caracteristico = request('color_olor');
+        $fmp->equipo_muestreo = request('equipo_muestreo');
+        $fmp->materia_impropio = request('materia_impropio');
+        $fmp->metodo_muestreo = request('metodo_muestreo');
+        $fmp->dwg = request('dwg');
+        $fmp->m10 = request('m10');
+        $fmp->m16 = request('m16');
+        $fmp->m18 = request('m18');
+        $fmp->f = request('f');
+        $fmp->superviso_muestreo = request('superviso_muestreo');
+        $fmp->aceptado_concesion = request('aceptado_concesion');
+        $fmp->usuario_logeado = request('usuario_logeado');
+        $fmp->dictamen_final = request('dictamen');
+        $fmp->observaciones_realizador = request('observaciones');
+        
+        $fmp->save();
+
+
+        //Si el dictamen fue rechazado se manda al usuario a rellenar el forato de Producto No Conforme (fpnc)
+        //con el folio para ligarlo al Formato de Materia Prima (fmp)
+        if(request('dictamen') == 'rechazado' ){
+            return view('user.fpnc_rellenar', compact('folio'));
+
+        }
+
+
+
+
+
+        // return view('user.tabla_fmp_enviados_revision', compact('formatos'))->with('creado', "El documento con folio: $folio fue creado correctamente");
+
+
+
+        //Si todo marcha genial me va a redirigir a esta vista con el mensaje de sesion que se muestra
+        return redirect()->route('user.perfil')->with('creado', "El documento con folio: $folio   fue creado correctamente");
 
 
     }
+
+
+    public function fmp_generados(){
+
+        $planta = Auth::user()->planta;
+        //Me selecciona todos los formatos generados por es planta 
+        $formatos = DB::select("SELECT*FROM fmp WHERE planta LIKE $planta ORDER BY created_at DESC");
+
+        return view('user.tabla_fmp_enviados_revision', compact('formatos'));
+    }
+
+
+    public function fmp_lleno(Fmp $fmp){
+
+        return view('fmp_lleno', compact('fmp'));
+
+    }
+
+
 
 
 

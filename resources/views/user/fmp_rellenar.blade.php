@@ -109,7 +109,8 @@
               <span class="centrar-verticalmente h6">Hora de recepción:</span>
             </div>       
             <div class="col-auto bg-white">
-              <input type="time" class="form-control mt-2" name="hora_recepcion">
+              <input type="time" class="form-control mt-2" value="{{old('hora_recepcion')}}" name="hora_recepcion">
+             {!!$errors->first('hora_recepcion', "<small class='text-danger fw-bold'> :message </small>")!!}
             </div>
           </dv>      
           </div>
@@ -160,7 +161,8 @@
               </div>
 
               <div class="col-10 p-0">
-                <input type="text" class="form-control mt-1" name="lote" >
+                <input type="text" class="form-control mt-1" name="lote" value="{{old('lote')}}" >
+                {!! $errors->first('lote', '<small class="text-danger fw-bold">:message </small>' ) !!}
               </div>
 
             </div>
@@ -195,19 +197,22 @@
               </div>
 
               <div class="col-10 p-0">
-                <input type="text" class="form-control mt-1" name="operador">
+                <input type="text" class="form-control mt-1" name="operador" value="{{old('operador')}}">
+                {!! $errors->first('operador', '<small class="text-danger fw-bold">:message</small> ' ) !!}
               </div>
               <div class="col-10 p-0 fondo-titulos mt-3">        
                 <h6 class="mt-2">PLACAS DEL TRACTO O TORTON :</h6>
               </div>
               <div class="col-10 p-0 mt-1">
-                <input type="text" class="form-control" name="placas_transporte">
+                <input type="text" class="form-control" name="placas_transporte" value="{{old('placas_transporte')}}">
+                {!! $errors->first('placas_transporte', '<small class="text-danger fw-bold">:message</small> ') !!}
               </div>
               <div class="col-10 p-0 fondo-titulos mt-3">        
                 <h6 class="mt-2">PLACAS CAJA :</h6>
               </div>
               <div class="col-10 p-0 mt-1">
-                <input type="text" class="form-control" name="placas_caja">
+                <input type="text" class="form-control" name="placas_caja" value="{{old('placas_caja')}}" >
+                {!! $errors->first('placas_caja', '<small class="text-danger fw-bold"> :message </small>  ') !!}
               </div>
           </div>
       <!-- COLUMNA DE LOS "DATOS DEL TRANSPORTE" -->
@@ -231,7 +236,8 @@
                 <h6 class="mt-2">Hora entrada lab.: </h6>
               </div>
               <div class="col-6">
-                <input type="time" class="form-control" id="hora" name="hora_entrada_laboratorio"  >
+                <input type="time" class="form-control" id="hora" name="hora_entrada_laboratorio" value="{{old('hora_entrada_laboratorio')}}">
+                {!! $errors->first('hora_entrada_laboratorio', '<small class="text-danger fw-bold"> :message </small>' ) !!}
               </div>
             </div>
           </div>
@@ -242,7 +248,8 @@
                 <h6 class="mt-2">Hora de liberación:</h6>
               </div>
               <div class="col-6">
-                <input type="time" class="form-control" name="hora_liberacion">
+                <input type="time" class="form-control" name="hora_liberacion" value="{{old('hora_liberacion')}}">
+                {!! $errors->first('hora_liberacion', '<small class="text-danger fw-bold">:message</small>') !!}
               </div>
             </div>
           </div>
@@ -272,7 +279,7 @@
                 <small class="fw-bold">HUMEDAD</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(%)" name="humedad">
+                <input type="number" step="any" class="form-control" placeholder="(%)" name="humedad" value="{{old('humedad')}}">
               </div>
             </div>
           </div>
@@ -284,7 +291,7 @@
                 <small class="fw-bold">TEMP.</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(°C)" name="temperatura" >
+                <input type="number" step="any" class="form-control" placeholder="(°C)" name="temperatura" {{old('temperatura')}}>
               </div>   
             </div>
           </div>
@@ -295,7 +302,7 @@
                 <small class="fw-bold">PESO ESPECIFICO</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(g/l)" name="peso_especifico">
+                <input type="number" step="any" class="form-control" placeholder="(g/l)" name="peso_especifico" value="{{old('peso_especifico')}}">
               </div>   
             </div>
           </div>
@@ -317,7 +324,7 @@
                 <small class="fw-bold">GRANO DAÑADO</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(%)" name="grano_dañado">
+                <input type="number" step="any" class="form-control" placeholder="(%)" name="grano_maltratado" value="{{old('grano_maltratado')}}">
               </div>
             </div>
           </div>
@@ -329,7 +336,7 @@
                 <small class="fw-bold">GRANO QUEBRADO</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(%)" name="grano_quebrado">
+                <input type="number" step="any" class="form-control" placeholder="(%)" name="grano_quebrado" value="{{old('grano_quebrado')}}">
               </div>   
             </div>
           </div>
@@ -340,7 +347,7 @@
                 <small class="fw-bold">IMPUREZAS</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(%)" name="impurezas">
+                <input type="number" step="any" class="form-control" placeholder="(%)" name="impurezas" value="{{old('impurezas')}}">
               </div>   
             </div>
           </div>
@@ -365,7 +372,7 @@
                 <small class="fw-bold">CANT. MUESTRA</small>
               </div>
               <div class="col-6">
-                <input type="number" step="any" class="form-control" placeholder="(Kg)" name="cantidad_muestra">
+                <input type="number" step="any" class="form-control" placeholder="(Kg)" name="cantidad_muestra" value="{{old('cantidad_muestra')}}">
               </div>
             </div>
           </div>
@@ -378,7 +385,7 @@
                 <small class="fw-bold">*BX</small>
               </div>
               <div class="col-6">
-                <input type="text" step="any" class="form-control" name="bx">
+                <input type="text" step="any" class="form-control" name="bx" value="{{old('bx')}}">
               </div>   
             </div>
           </div>
@@ -435,7 +442,7 @@
                 <small class="fw-bold">FLUORECENCIA</small>
               </div>
               <div class="col-6">
-                <input type="text" class="form-control form-control" name="fluorecencia" >
+                <input type="text" class="form-control form-control" name="fluorecencia" value="{{old('fluorecencia')}}" >
               </div>   
             </div>
           </div>
@@ -527,7 +534,7 @@
                 <small class="fw-bold">MATERIA EXTRAÑA</small>
               </div>
               <div class="col-6">
-                <input type="text" class="form-control form-control" name="materia_extraña">
+                <input type="text" class="form-control form-control" name="materia_impropio" value="{{old('materia_impropio')}}">
               </div>   
             </div>
           </div>
@@ -561,7 +568,7 @@
               </div>
               
               <div class="col-12 border p-2">
-                <select class="text-center form-select mt-1 form-control p-0" name="aceptado_concecion">
+                <select class="text-center form-select mt-1 form-control p-0" name="aceptado_concesion">
                   <option value="SR. ROBERTO BERISTAIN ">SR. ROBERTO BERISTAIN </option>
                   <option value="DR. SAMUEL BERISTAIN ">DR. SAMUEL BERISTAIN </option>
                   <option value="SR. MOISES BRITAIN ">SR. MOISES BERISTAIN </option>
@@ -569,7 +576,6 @@
                   <option value="SR. JOSUE BERISTAIN ">SR. JOSUE BERISTAIN </option>
                 </select>
               </div>
-            
             </div>
           </div>
           
@@ -582,7 +588,7 @@
                 <h6 class="mt-2">DWG (micrones)</h6>
               </div>
               <div class="col-6 py-2  px-0 border">
-                <input type="text" class="form-control form-control-sm mt-2" class="dwg">
+                <input type="text" class="form-control form-control-sm mt-2" name="dwg" value="{{old('dwg')}}">
               </div>
             </div>
 
@@ -591,7 +597,7 @@
                 <h6 class="mt-2">M10 (%)</h6>
               </div>
               <div class="col-6 py-0 px-1 border">
-                <input type="text" class="form-control form-control-sm" name="m10" >
+                <input type="text" class="form-control form-control-sm" name="m10" value="{{old('m10')}}">
               </div>
             </div>
 
@@ -600,7 +606,7 @@
                 <h6 class="mt-2">M16 (%)</h6>
               </div>
               <div class="col-6 py-0 px-1 border">
-                <input type="text" class="form-control form-control-sm" name="m16" >
+                <input type="text" class="form-control form-control-sm" name="m16" value="{{old('m16')}}" >
               </div>
             </div>
 
@@ -609,7 +615,7 @@
                 <h6 class="mt-2">M18 (%)</h6>
               </div>
               <div class="col-6 py-0 px-1 border">
-                <input type="text" class="form-control form-control-sm" name="m18" >
+                <input type="text" class="form-control form-control-sm" name="m18" value="{{old('m18')}}" >
               </div>
             </div>
 
@@ -618,7 +624,7 @@
                 <h6 class="mt-2">F(%)</h6>
               </div>
               <div class="col-6 py-0 px-1 border">
-                <input type="text" class="form-control form-control-sm" name="f" >
+                <input type="text" class="form-control form-control-sm" name="f" value="{{old('f')}}" >
               </div>
             </div>
 
@@ -634,11 +640,20 @@
                 <h4>SUPERVISO MUESTREO</h4>
               </div>
               <div class="col-12 text-center">
-                <select class="text-center form-select mt-1 form-control p-1" name="superviso_muestreo" >
-                  @foreach ($usuarios_planta as $usuario)
-                    <option value="{{$usuario->nombre_completo}}">{{$usuario->nombre_completo}}</option>
-                  @endforeach
-                </select>
+
+                @if ($usuarios_planta)
+                  <select class="text-center form-select mt-1 form-control p-1" name="superviso_muestreo" >
+                    @foreach ($usuarios_planta as $usuario)
+                      <option value="{{$usuario->nombre_completo}}">{{$usuario->nombre_completo}}</option>
+                    @endforeach
+                  </select>
+                @else
+                    <span class="text-danger fw-bold">No se han registrado más usuarios para supervisión de la planta {{Auth::user()->planta}}</span>
+                @endif
+             
+
+
+
               </div>
               <div class="col-12 text-center mt-4 fondo-titulos mt-5">
                 <h4 class="mt-2">{{Auth::user()->nombre_completo}}</h4>
@@ -651,9 +666,9 @@
                 <h5 class="mt-3">DICTAMEN FINAL</h5>
               </div>
               <div class="col-6 text-center mt-4 fondo-titulos">
-                <select class="text-center form-select mt-1 form-control p-0">
-                  <option value="ACEPTADO">ACEPTADO</option>
-                  <option value="RECHAZADO">RECHAZADO</option>
+                <select class="text-center form-select mt-1 form-control p-0" name="dictamen">
+                  <option value="aceptado">ACEPTADO</option>
+                  <option value="rechazado">RECHAZADO</option>
                 </select>
               </div>
             </div>
@@ -676,7 +691,7 @@
             <h4>OBSERVACIONES:</h4>
           </div>
           <div class="col-12">
-            <textarea name="" id="miTextarea" class="form-control w-100 h-100"></textarea>
+            <textarea name="observaciones" id="miTextarea" class="form-control w-100 h-100">{{old('observaciones')}}</textarea>
           </div>
         </div>
       </div>
