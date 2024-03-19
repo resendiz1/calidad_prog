@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-center;
-    width: 80%;
+    width: 100%;
 }
 .fondo{
     background-color: rgb(204, 218, 224);

@@ -565,7 +565,7 @@
           <h6 class="mt-2">M18 (%)</h6>
         </div>
         <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">{{$fmp->m18}}}</h6>
+            <h6 class="m-2">{{$fmp->m18}}</h6>
         </div>
       </div>
 
@@ -621,14 +621,22 @@
       <div class="row">
 
         <div class="col-4">
+
           <div class="row">
             <div class="col-12">
               <h4>OBSERVACIONES BASCULA:</h4>
             </div>
             <div class="col-12">
-              <p>{{$fmp->observaciones_bascula}}</p>
+              <p>
+                @if ($fmp->observaciones_bascula && $fmp->reviso_bascula)
+                    {{$fmp->observaciones_bascula}}
+                @else 
+                     <li>No hubo oberservaciones</li> 
+                @endif 
+              </p>
             </div>
           </div>
+
         </div>
 
         <div class="col-4">
@@ -637,7 +645,13 @@
               <h4>OBSERVACIONES PRODUCCION:</h4>
             </div>
             <div class="col-12">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae culpa neque quidem quae laboriosam animi id et sunt nisi possimus, sit ut minus eligendi dicta inventore! Laborum cupiditate nostrum rem.</p>
+              <p>
+                @if ($fmp->observaciones_produccion && $fmp->reviso_produccion)
+                {{$fmp->observaciones_produccion}}
+                @else 
+                    <li>No hubo oberservaciones</li> 
+                @endif 
+               </p>
             </div>
           </div>
         </div>
@@ -648,7 +662,13 @@
               <h4>OBSERVACIONES CALIDAD:</h4>
             </div>
             <div class="col-12">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae culpa neque quidem quae laboriosam animi id et sunt nisi possimus, sit ut minus eligendi dicta inventore! Laborum cupiditate nostrum rem.</p>
+              <p>
+                @if ($fmp->observaciones_calidad)
+                {{$fmp->observaciones_calidad}}
+                @else 
+                    <li>No hubo oberservaciones</li> 
+                @endif 
+               </p>
             </div>
           </div>
         </div>
@@ -677,10 +697,17 @@
             <h3>BASCULA</h3>
           </div>
 
-          <div class="col-12 text-white text-center bg-success">
-            <i class="fa fa-circle-check mt-3"></i> 
-            <h6> <b> REVISO:</b> ING. CARLOS </h6>
-          </div>
+          @if ($fmp->reviso_bascula)
+            <div class="col-12 text-white text-center bg-success">
+              <i class="fa fa-circle-check mt-3"></i> 
+              <h6> <b> REVISO:</b> {{$fmp->reviso_bascula}} </h6>
+            </div>
+          @else
+            <div class="col-12 text-white text-center bg-secondary">
+              <i class="fa fa-eye mt-3"></i> 
+              <h6> FALTA POR REVISAR</h6>
+            </div>     
+          @endif
 
         </div>
       </div>
@@ -693,10 +720,17 @@
             <h3>PRODUCCIÓN</h3>
           </div>
           
-          <div class="col-12 text-white text-center bg-success">
-               <i class="fa fa-circle-check mt-3"></i> 
-               <h6> <b> REVISO:</b> ING. ANTONIO </h6>
-          </div>
+          @if ($fmp->reviso_produccion)
+            <div class="col-12 text-white text-center bg-success">
+              <i class="fa fa-circle-check mt-3"></i> 
+              <h6> <b> REVISO:</b> {{$fmp->reviso_produccion}} </h6>
+            </div>
+          @else
+            <div class="col-12 text-white text-center bg-secondary">
+              <i class="fa fa-eye mt-3"></i> 
+              <h6> FALTA POR REVISAR</h6>
+            </div>     
+          @endif
 
         </div>
       </div>
@@ -707,8 +741,9 @@
             <h3>CALIDAD</h3>
           </div>
           
-          <div class="col-12 text-white text-center bg-info">
-               <i class="fa fa-eye mt-3"></i> <h6>POR CONFIMAR</h6>
+          <div class="col-12 text-white text-center bg-success">
+            <i class="fa fa-circle-check mt-3"></i> 
+            <h6> <b> REVISO:</b> {{$fmp->usuario_logeado}} </h6>
           </div>
 
         </div>

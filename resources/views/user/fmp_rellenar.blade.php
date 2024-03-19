@@ -651,8 +651,7 @@
                     <span class="text-danger fw-bold">No se han registrado más usuarios para supervisión de la planta {{Auth::user()->planta}}</span>
                 @endif
              
-
-
+                  {!!$errors->first('superviso_muestreo', '<br> <li class="text-danger"> :message </li>')!!}
 
               </div>
               <div class="col-12 text-center mt-4 fondo-titulos mt-5">
@@ -667,8 +666,8 @@
               </div>
               <div class="col-6 text-center mt-4 fondo-titulos">
                 <select class="text-center form-select mt-1 form-control p-0" name="dictamen">
-                  <option value="aceptado">ACEPTADO</option>
-                  <option value="rechazado">RECHAZADO</option>
+                  <option value="ACEPTADO">ACEPTADO</option>
+                  <option value="ACEPTADO">RECHAZADO</option>
                 </select>
               </div>
             </div>

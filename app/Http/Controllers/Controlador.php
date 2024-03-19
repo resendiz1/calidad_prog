@@ -225,7 +225,8 @@ class Controlador extends Controller
             'placas_transporte' => 'required',
             'placas_caja' => 'required',
             'hora_entrada_laboratorio' => 'required',
-            'hora_liberacion' => 'required'
+            'hora_liberacion' => 'required',
+            'superviso_muestreo' => 'required'
         ]);
         
 
@@ -311,6 +312,63 @@ class Controlador extends Controller
 
         return view('fmp_lleno', compact('fmp'));
 
+    }
+
+
+    public function pendientes_revisar(){
+
+        $area = Auth::user()->area;
+        $planta = Auth::user()->planta;
+
+        if($area == 'PRODUCCION'){
+            $reviso = 'reviso_produccion';
+        }
+        if($area == 'BASCULA'){
+            $reviso = 'reviso_bascula';
+        }
+
+
+
+
+
+
+        $pendientes = DB::select("SELECT*FROM fmp WHERE planta=$planta");
+
+
+        return view('user.tabla_fmp_por_revisar', compact('pendientes', 'reviso'));
+    }
+
+
+    public function  fmp_revisar(Fmp $fmp){
+
+        $area = Auth::user()->area;
+
+        if($area == 'PRODUCCION'){
+            $reviso = 'reviso_produccion';
+            $observaciones = 'observaciones_produccion';
+        }
+
+        if($area == 'BASCULA'){
+            $reviso = 'reviso_bascula';
+            $observaciones = 'observaciones_bascula';
+        }
+
+        return view('user.fmp_por_revisar', compact('fmp', 'reviso', 'observaciones'));
+
+    }
+
+
+    public function fmp_revisado(Fmp $fmp){
+
+    //   return  request('observaciones_area');
+
+
+        $fmp->update([
+            request('reviso') => request('usuario'),
+            request('observaciones_area') => request('observaciones'),
+        ]);
+
+        return redirect()->route('pendientes.revisar')->with('revisado', 'El documento se guardo con exito');
     }
 
 

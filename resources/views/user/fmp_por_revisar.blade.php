@@ -68,7 +68,7 @@
           <span class="centrar-verticalmente h6">Planta:</span>
         </div>       
         <div class=" col-sm-3 col-md-3 col-lg-2 bg-white mt-1">
-          <h6 class="mt-2">1</h6>
+          <h6 class="mt-2">{{$fmp->planta}}</h6>
         </div>
       </div>
       
@@ -77,7 +77,7 @@
           <span class="centrar-verticalmente h6">Fecha:</span>
         </div>       
         <div class="col-auto bg-white mt-1">
-          <span class="font-weight-bold">26 de enero del 2024</span>
+          <span class="font-weight-bold">{{$fmp->fecha}}</span>
         </div>
     </div>
 
@@ -94,7 +94,7 @@
         <span class="centrar-verticalmente h6">Folio:</span>
       </div>       
       <div class="col-auto bg-white mt-1">
-        <span class="text-danger font-weight-bold h6">PL3-0001</span>
+        <span class="text-danger font-weight-bold h6">{{$fmp->folio}}</span>
       </div>
     </div>
     
@@ -103,7 +103,7 @@
         <span class="centrar-verticalmente h6">Hora de recepción:</span>
       </div>       
       <div class="col-auto bg-white">
-        <span class="font-weight-bold"> 12:20 am </span>
+        <span class="font-weight-bold"> {{$fmp->hora_recepcion}} </span>
       </div>
     </dv>      
     </div>
@@ -131,7 +131,7 @@
         </div>
 
         <div class="col-10 text-left p-0">
-            <h6 class="m-2">PULIDURA DE ARROZ</h6>
+            <h6 class="m-2">{{$fmp->producto}}</h6>
         </div>
 
         <div class="col-10 mt-3 border border-gray border-2 fondo-titulos">
@@ -139,7 +139,7 @@
         </div>
 
         <div class="col-10 p-0">
-            <h6 class="m-2">PROMEXA</h6>
+            <h6 class="m-2">{{$fmp->proveedor}}</h6>
         </div>
 
         <div class="col-10 fondo-titulos mt-3">
@@ -147,7 +147,7 @@
         </div>
 
         <div class="col-10 p-0">
-            <h6 class="m-2">LOTE 0025</h6>
+            <h6 class="m-2">{{$fmp->lote}}</h6>
         </div>
 
       </div>
@@ -169,7 +169,7 @@
         </div>
         
         <div class="col-10 text-left p-0">
-            <h6 class="m-2">TINISA</h6>
+            <h6 class="m-2">{{$fmp->linea_transportista}}</h6>
         </div>
 
         <div class="col-10 mt-3 fondo-titulos border border-gray p-0">
@@ -177,7 +177,7 @@
         </div>
 
         <div class="col-10 p-0">
-            <h6 class="m-2">TEODORO GREGORIO ENCARNACIÓN</h6>
+            <h6 class="m-2">{{$fmp->nombre_operador}}</h6>
         </div>
 
         <div class="col-10 p-0 fondo-titulos mt-3">        
@@ -185,7 +185,7 @@
         </div>
 
         <div class="col-10 p-0 mt-1">
-            <h6 class="m-2">PYTK-1992</h6>
+            <h6 class="m-2">{{$fmp->placas_transporte}}</h6>
         </div>
 
         <div class="col-10 p-0 fondo-titulos mt-3">        
@@ -193,7 +193,7 @@
         </div>
 
         <div class="col-10 p-0 mt-1">
-            <h6 class="m-2">PYTK-1992</h6>
+            <h6 class="m-2">{{$fmp->placas_caja}}</h6>
         </div>
 
     </div>
@@ -218,7 +218,7 @@
           <h6 class="mt-2">Hora entrada lab.: </h6>
         </div>
         <div class="col-6">
-            <h6 class="m-2">13:54</h6>
+            <h6 class="m-2">{{$fmp->hora_entrada_lab}}</h6>
         </div>
       </div>
     </div>
@@ -229,7 +229,7 @@
           <h6 class="mt-2">Hora de liberación:</h6>
         </div>
         <div class="col-6">
-            <h6 class="m-2">15:50</h6>
+            <h6 class="m-2">{{$fmp->hora_liberacion}}</h6>
         </div>
       </div>
     </div>
@@ -259,7 +259,7 @@
           <small class="fw-bold">HUMEDAD</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">15 %</h6>
+            <h6 class="m-2">{{$fmp->humedad}} %</h6>
         </div>
       </div>
     </div>
@@ -271,7 +271,7 @@
           <small class="fw-bold">TEMP.</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">20°</h6>
+            <h6 class="m-2">{{$fmp->temperatura}}°</h6>
         </div>   
       </div>
     </div>
@@ -282,7 +282,7 @@
           <small class="fw-bold">PESO ESPECIFICO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">92 g/l</h6>
+            <h6 class="m-2">{{$fmp->peso_especifico}} g/l</h6>
         </div>   
       </div>
     </div>
@@ -307,7 +307,7 @@
           <small class="fw-bold">GRANO DAÑADO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">2 %</h6>
+            <h6 class="m-2">{{$fmp->grano_maltratado}} %</h6>
         </div>
       </div>
     </div>
@@ -319,7 +319,7 @@
           <small class="fw-bold">GRANO QUEBRADO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">2 %</h6>
+            <h6 class="m-2">{{$fmp->grano_quebrado}} %</h6>
         </div>   
       </div>
     </div>
@@ -330,7 +330,7 @@
           <small class="fw-bold">IMPUREZAS</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">10 %</h6>
+            <h6 class="m-2">{{$fmp->impurezas}} %</h6>
         </div>   
       </div>
     </div>
@@ -358,7 +358,7 @@
           <small class="fw-bold">CANT. MUESTRA</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">2 kg</h6>
+            <h6 class="m-2">{{$fmp->cantidad_muestra}} kg</h6>
         </div>
       </div>
     </div>
@@ -371,7 +371,7 @@
           <small class="fw-bold">*BX</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">15.5 BX</h6>
+            <h6 class="m-2">{{$fmp->bx}} BX</h6>
         </div>   
       </div>
     </div>
@@ -384,7 +384,7 @@
           <small class="fw-bold">PLAGAS</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">NO</h6>
+            <h6 class="m-2">{{$fmp->plagas}}</h6>
         </div>   
       </div>
     </div>
@@ -410,7 +410,7 @@
           <small class="fw-bold">CERTIF. DE CALIDAD</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">SI</h6>
+            <h6 class="m-2">{{$fmp->certificado_calidad}}</h6>
         </div>
       </div>
     </div>
@@ -422,7 +422,7 @@
           <small class="fw-bold">FLOURECENCIA</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">NO</h6>
+            <h6 class="m-2">{{$fmp->fluorecencia}}</h6>
         </div>   
       </div>
     </div>
@@ -434,7 +434,7 @@
           <small class="fw-bold">ASEGURADO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">SI CANDADO</h6>
+            <h6 class="m-2">{{$fmp->asegurado}}</h6>
         </div>   
       </div>
     </div>
@@ -459,7 +459,7 @@
           <small class="fw-bold">COLOR Y OLOR CARACTERISTICO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">NO APLICA</h6>
+            <h6 class="m-2">{{$fmp->color_olor_caracteristico}}</h6>
         </div>
       </div>
     </div>
@@ -471,7 +471,7 @@
           <small class="fw-bold">EQUIPO DE MUESTREO</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">CALADOR DE MANO</h6>
+            <h6 class="m-2">{{$fmp->equipo_muestreo}}</h6>
         </div>
       </div>
     </div>
@@ -501,7 +501,7 @@
           <small class="fw-bold">MATERIA EXTRAÑA</small>
         </div>
         <div class="col-6">
-            <h6 class="m-2">NINGUNA</h6>
+            <h6 class="m-2">{{$fmp->materia_impropio}}</h6>
         </div>   
       </div>
     </div>
@@ -526,7 +526,7 @@
     <div class="col-sm-12 col-md-12  col-lg-3 mt-3">
       <div class="row">
         <div class="col-12 border p-2 text-center">
-          <h6 class="mt-2"> <b> METODO DE MUESTREO: </b> POE/GP/CC/080</h6>
+          <h6 class="mt-2"> <b> METODO DE MUESTREO: </b> {{$fmp->metodo_muestreo}}</h6>
         </div>
         
         <div class="col-12 border p-2 text-center">
@@ -534,7 +534,7 @@
         </div>
         
         <div class="col-12 border p-2 text-center">
-            <h6 class="m-2">DR. SAMUEL BERISTAIN RODRIGUEZ</h6>
+            <h6 class="m-2">{{$fmp->aceptado_concesion}}</h6>
         </div>
       
       </div>
@@ -549,7 +549,7 @@
           <h6 class="mt-2">DWG (micrones)</h6>
         </div>
         <div class="col-6 py-2  px-0 border">
-            <h6 class="m-2">X</h6>
+            <h6 class="m-2">{{$fmp->dwg}}</h6>
         </div>
       </div>
 
@@ -558,7 +558,7 @@
           <h6 class="mt-2">M10 (%)</h6>
         </div>
         <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">X</h6>
+            <h6 class="m-2">{{$fmp->m10}}</h6>
         </div>
       </div>
 
@@ -567,7 +567,7 @@
           <h6 class="mt-2">M16 (%)</h6>
         </div>
         <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">X</h6>
+            <h6 class="m-2">{{$fmp->m16}}</h6>
         </div>
       </div>
 
@@ -576,7 +576,7 @@
           <h6 class="mt-2">M18 (%)</h6>
         </div>
         <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">X</h6>
+            <h6 class="m-2">{{$fmp->m18}}</h6>
         </div>
       </div>
 
@@ -585,7 +585,7 @@
           <h6 class="mt-2">F(%)</h6>
         </div>
         <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">X</h6>
+            <h6 class="m-2">{{$fmp->f}}</h6>
         </div>
       </div>
 
@@ -602,11 +602,11 @@
         </div>
         
         <div class="col-12 text-center">
-            <h5>Nombre de quien superviso el muestreo</h5>
+            <h5>{{$fmp->superviso_muestreo}}</h5>
         </div>
 
         <div class="col-12 text-center mt-4 fondo-titulos mt-5">
-          <h4 class="mt-2">USUARIO LOGEADO</h4>
+          <h4 class="mt-2">{{$fmp->usuario_logeado}}</h4>
         </div>
       </div>
 
@@ -615,7 +615,7 @@
           <h6 class="mt-3">DICTAMEN FINAL</h6>
         </div>
         <div class="col-6 text-center mt-4 bg-success text-white">
-            <h6 class="m-3">ACEPTADO</h6>
+            <h6 class="m-3">{{$fmp->dictamen_final}}</h6>
         </div>
       </div>
 
@@ -628,41 +628,48 @@
 
 
 
-
-
-<!-- CONTENEDOR DE OBSERVACIONES -->
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h4>OBSERVACIONES:</h4>
-    </div>
-    <div class="col-12">
-      <textarea name="" id="miTextarea" class="form-control w-100 h-100"></textarea>
-    </div>
-  </div>
-</div>
-<!-- CONTENEDOR DE OBSERVACIONES -->
-
-
-
-
-
-
-<!-- CONTENEDOR DE LAS FIRMAS -->
-<div class="container mt-5">
-    <div class="row justify-content-around">
+<form action="{{route('fmp.revisado', $fmp->id)}}" method="POST">
+  @csrf @method('PATCH')
+  <!-- CONTENEDOR DE OBSERVACIONES -->
+  <div class="container">
+    <div class="row">
       <div class="col-12">
-        <button class="btn btn-success w-100">
-           <i class="fa fa-check"></i> ENVIAR CONFIRMACIÓN DE ENTERADO
-        </button>
+        <h4>OBSERVACIONES:</h4>
+      </div>
+      <div class="col-12">
+        <textarea name="observaciones" id="miTextarea" class="form-control w-100 h-100"></textarea>
+        <input type="text" name="usuario" value="{{Auth::user()->nombre_completo}}" >
+        <input type="hidden" name="reviso" value="{{$reviso}}">
+        <input type="hidden" name="observaciones_area" value="{{$observaciones}}">
       </div>
     </div>
   </div>
-  <!-- CONTENEDOR DE LAS FIRMAS -->
+  <!-- CONTENEDOR DE OBSERVACIONES -->
 
+
+
+    <!-- CONTENEDOR DEL BOTON -->
+    <div class="container mt-5">
+      <div class="row justify-content-around">
+        <div class="col-12">
+          <button class="btn btn-success w-100">
+            <i class="fa fa-check"></i> ENVIAR CONFIRMACIÓN DE ENTERADO
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- CONTENEDOR DEL BOTON -->
+
+
+</form>
 
 
 </div><!--Cierra contenedor de todo-->
+
+
+
+
+
 
 
 

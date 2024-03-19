@@ -13,7 +13,17 @@
        <div class="col-sm-6 col-md-4 col-lg-2 mt-2">
             <div class="row justify-content-center">
                 <div class="col-12 text-center mb-0">
-                    <h6>Arturo Resendiz López</h6>
+                    <h6>
+                        @if (Auth::user())
+                            {{  Auth::user()->nombre_completo}}
+
+                        @elseif(Auth::adminis())
+                            {{Auth::adminis()->nombre_completo}}
+                        @endif
+       
+                            
+                    
+                    </h6>
                 </div>
                 <div class="col-12 text-center mt-0">
                     <a href="#">Cerrar Sesión</a>

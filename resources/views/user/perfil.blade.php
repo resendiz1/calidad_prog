@@ -6,23 +6,30 @@
 
 <!-- MENU DE OPCIONES -->
 <div class="container-fluid mt-5 menu">
-    <div class="row mt-5 justify-content-around">
+    <div class="row d-flex justify-content-around">
+        
 
-    <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
-        <a href="{{route('fmp.rellenar')}}">
-            <div class="row">
-                <div class="col-12">
-                    <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/070/01</h5>
+
+
+    @if (Auth::user()->area == 'CALIDAD')
+            
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div  p-5 border border-5">
+            <a href="{{route('fmp.rellenar')}}">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/070/01</h5>
+                    </div>
+                    <div class="col-12">
+                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                    </div>
                 </div>
-                <div class="col-12">
-                    <i class="fa fa-pencil fa-3x mt-2"></i>
-                </div>
-            </div>
-        </a>
-    </div>
+            </a>
+        </div>
 
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5">
+
+
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div p-5 border border-5 ">
             <a href="{{route('fmp.generados')}}">
                 <div class="row">
                     <div class="col-12">
@@ -35,22 +42,26 @@
             </a>
         </div>
 
+    @else    
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5">
-            <a href="{{route('por_revisar')}}">
-                <div class="row">
+
+
+    
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div p-5 border border-5 w-100">
+            <div class="row">
+                <a href="{{route('pendientes.revisar')}}">
                     <div class="col-12">
-                        <h5 class="mx-auto">FORMATOS POR REVISAR</h5>
+                        <p class="mx-auto h5">FORMATOS POR REVISAR</p>
                     </div>
                     <div class="col-12">
                         <i class="fa fa-eye fa-3x mt-3"></i>
                     </div>
-                </div>
-            </a>
-
+                </a>
+            </div>
         </div>
-
-
+    @endif
+        
+        
     </div>
 </div>
 

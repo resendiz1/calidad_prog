@@ -21,7 +21,7 @@ Route::view('/user/fmp_por_revisar', 'user.fmp_por_revisar')->name('por_revisar'
 Route::view('/user/fpnc', 'user.fpnc_rellenar');
 Route::view('/buscador_fmp', 'buscador_fmp');
 Route::view('/encontrado', 'fmp_lleno');
-Route::view('/user/fmp_pendientes_revisar', 'user.tabla_fmp_por_revisar');
+
 Route::view('/user/fmp_enviado_revision', 'user.fmp_enviado_revision');
 Route::view('/admin/eliminar', 'admin.eliminar_usuario');
 
@@ -58,3 +58,8 @@ Route::post('/user/fmp/agregar/', [Controlador::class, 'fmp_agregar'])->name('fm
 Route::get('/user/fmp/generados', [Controlador::class, 'fmp_generados'])->name('fmp.generados');
 Route::get('/user/fmp/generados/{fmp}/llenos', [Controlador::class, 'fmp_lleno'])->name('fmp.lleno');
 
+Route::get('/user/fmp_pendientes_revisar', [Controlador::class, 'pendientes_revisar'])->name('pendientes.revisar');
+
+Route::get('/user/fmp_pendientes_revisar/{fmp}/fmp', [Controlador::class, 'fmp_revisar'])->name('fmp.revisar');
+
+Route::patch('/user/fmp_pendientes_revisar/{fmp}/fmp/revisado', [Controlador::class, 'fmp_revisado'])->name('fmp.revisado');
