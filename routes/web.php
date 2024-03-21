@@ -63,3 +63,6 @@ Route::get('/user/fmp_pendientes_revisar', [Controlador::class, 'pendientes_revi
 Route::get('/user/fmp_pendientes_revisar/{fmp}/fmp', [Controlador::class, 'fmp_revisar'])->name('fmp.revisar');
 
 Route::patch('/user/fmp_pendientes_revisar/{fmp}/fmp/revisado', [Controlador::class, 'fmp_revisado'])->name('fmp.revisado');
+
+Route::get('/admin/busqueda', [Controlador::class, 'busqueda_fmp'])->name('busqueda.fmp');
+Route::post('/admin/busqueda', [Controlador::class, 'buscados_fmp'])->name('buscados.fmp');

@@ -372,6 +372,22 @@ class Controlador extends Controller
     }
 
 
+    public function busqueda_fmp(){
+
+        $formatos = Fmp::all();
+
+        return view('buscador_fmp', compact('formatos'));
+    }
+
+    public function buscados_fmp(){
+
+        $query = request('busqueda');
+        $formatos = DB::select("SELECT*FROM fmp WHERE proveedor LIKE '%$query%'  OR producto LIKE '%$query%' OR fecha LIKE '%$query%' ");
+        return view('buscador_fmp', compact('formatos'));
+
+    }
+
+
 
 
 

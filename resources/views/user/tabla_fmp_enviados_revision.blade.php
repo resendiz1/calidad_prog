@@ -37,7 +37,7 @@
             <div class="row justify-content-center">
                 <div class="col-6 text-center">
                     <span>Bascula: 
-                    @if ($formato->reviso_bascula == 'revisado')
+                    @if ($formato->reviso_bascula)
                         <i class="fa fa-eye text-success mx-2"></i> </span>
                     @elseif ($formato->reviso_bascula=='')
                         <i class="fa fa-clock text-danger mx-2"></i> </span>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-6 text-center">
                     <span>Producción: 
-                    @if ($formato->reviso_produccion == 'revisado')
+                    @if ($formato->reviso_produccion)
                         <i class="fa fa-eye text-success mx-2"></i> </span>
                     @elseif ($formato->reviso_produccion=='')
                         <i class="fa fa-clock text-danger mx-2"></i> </span>

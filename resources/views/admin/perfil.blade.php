@@ -42,7 +42,7 @@
 
 
         <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div border border-5">
-            <a href="busqueda.html">
+            <a href="{{route('busqueda.fmp')}}">
                 <div class="row p-5">
                     <div class="col-12">
                         <h5 class="mx-auto">BUSCAR DOCUMENTOS</h5>

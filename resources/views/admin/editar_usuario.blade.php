@@ -2,6 +2,27 @@
 @section('contenido')
 @include('assets.nav')
 
+
+
+
+
+
+
+
+{{-- boton de regresar --}}
+<div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-2 text-center">
+            <a href="{{route('lista.usuarios')}}" class="btn btn-dark text-white btn-sm p-2 w-100 fw-bold">Regresar</a>
+        </div>
+    </div>
+</div>
+
+{{-- boton de regresar --}}
+
+
+
+
 <!-- FORMLARO DE EDITAR USUARIOS -->
 <form action="{{route('usuarios.update', $usuario->id)}}" method="POST">
     @csrf @method('PATCH')
