@@ -70,7 +70,7 @@
                     @if ($formato->reviso_produccion)
                         <div class="col-6">
                             <small>Producción: </small>
-                            <i class="fa fa-eye mx-2"></i>
+                            <i class="fa fa-check mx-2"></i>
                         </div>
                         
                     @else

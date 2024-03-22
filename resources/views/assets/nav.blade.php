@@ -14,19 +14,28 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center mb-0">
                     <h6>
-                        @if (Auth::user())
-                            {{  Auth::user()->nombre_completo}}
 
-                        @elseif(Auth::adminis())
-                            {{Auth::adminis()->nombre_completo}}
+
+
+                        @if (isset(Auth::user()->nombre_completo))
+                            {{  Auth::user()->nombre_completo}}
                         @endif
-       
-                            
-                    
+
+                        
+                        @if (isset(Auth::guard('adminis')->user()->nombre_completo))
+                        
+                        @endif
+
+
+
+
                     </h6>
                 </div>
                 <div class="col-12 text-center mt-0">
-                    <a href="#">Cerrar Sesión</a>
+                    <form action="{{route('cerrar.sesion')}}" method="POST">
+                        @csrf
+                        <button class="btn  btn-sm" type="submit">Cerrar Sesión</button>
+                    </form>
                 </div>
             </div>
        </div>

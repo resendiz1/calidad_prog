@@ -7,14 +7,28 @@ use App\Models\Fmp;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Request;
 
 class Controlador extends Controller
 {
-
     protected $guard = 'adminis'; 
 
-    public function login_admin(Request $request){
+
+    public function __construct(){
+        $this->middleware('auth')->only('fmp_agregar');
+    }
+
+
+
+
+    public function login(Request $request){
+
+        //Se cierran las sesiones abiertas antes de iniciar una nueva sesion
+        Session::flush(); 
+        Auth::logout();
+        //Se cierran las sesiones abiertas antes de iniciar una nueva sesion
+
 
         $credenciales = request()->only('email', 'password');
 
@@ -327,6 +341,13 @@ class Controlador extends Controller
             $reviso = 'reviso_bascula';
         }
 
+        if($area == 'CALIDAD'){
+            Session::flush(); //Manda alv la session
+            Auth::logout();
+            return redirect()->route('login');
+    
+        }
+
 
 
 
@@ -337,6 +358,9 @@ class Controlador extends Controller
 
         return view('user.tabla_fmp_por_revisar', compact('pendientes', 'reviso'));
     }
+
+
+
 
 
     public function  fmp_revisar(Fmp $fmp){
@@ -353,9 +377,22 @@ class Controlador extends Controller
             $observaciones = 'observaciones_bascula';
         }
 
+        if($area == 'CALIDAD'){
+            Session::flush(); //Manda alv la session
+            Auth::logout();
+            return redirect()->route('login');
+    
+        }
+
+ 
+
         return view('user.fmp_por_revisar', compact('fmp', 'reviso', 'observaciones'));
 
     }
+
+
+
+
 
 
     public function fmp_revisado(Fmp $fmp){
@@ -387,11 +424,14 @@ class Controlador extends Controller
 
     }
 
+    public function cerrar_sesion(){
 
+        Session::flush(); //Manda alv la session
+        Auth::logout();
+        return redirect()->route('login');
 
+    }
 
-
-    
 
 
 
