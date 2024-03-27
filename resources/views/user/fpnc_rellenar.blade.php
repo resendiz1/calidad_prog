@@ -76,7 +76,9 @@
                     <span class="fw-bold">Folio: </span>
                 </div>
                 <div class="col-6">
-                    24 de Febrero del 2024
+                   <span class="text-danger">
+                    PL3-01
+                   </span>
                 </div>
             </div>
         </div>

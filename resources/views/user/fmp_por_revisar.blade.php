@@ -638,7 +638,7 @@
       </div>
       <div class="col-12">
         <textarea name="observaciones" id="miTextarea" class="form-control w-100 h-100"></textarea>
-        <input type="text" name="usuario" value="{{Auth::user()->nombre_completo}}" >
+        <input type="hidden" name="usuario" value="{{Auth::user()->nombre_completo}}" >
         <input type="hidden" name="reviso" value="{{$reviso}}">
         <input type="hidden" name="observaciones_area" value="{{$observaciones}}">
       </div>

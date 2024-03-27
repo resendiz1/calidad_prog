@@ -13,7 +13,7 @@
 
     @if (Auth::user()->area == 'CALIDAD')
             
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div  p-5 border border-5">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
             <a href="{{route('fmp.rellenar')}}">
                 <div class="row">
                     <div class="col-12">
@@ -28,8 +28,28 @@
 
 
 
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
+            <a href="{{route('tabla.fpnc')}}">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/001/001 PENDIENTES</h5>
+                    </div>
+                    <div class="col-12">
+                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div p-5 border border-5 ">
+
+
+
+
+
+
+
+
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5 ">
             <a href="{{route('fmp.generados')}}">
                 <div class="row">
                     <div class="col-12">
@@ -41,6 +61,7 @@
                 </div>
             </a>
         </div>
+
 
     @else    
 

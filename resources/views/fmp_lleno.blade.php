@@ -663,8 +663,8 @@
             </div>
             <div class="col-12">
               <p>
-                @if ($fmp->observaciones_calidad)
-                {{$fmp->observaciones_calidad}}
+                @if ($fmp->observaciones_realizador)
+                {{$fmp->observaciones_realizador}}
                 @else 
                     <li>No hubo oberservaciones</li> 
                 @endif 

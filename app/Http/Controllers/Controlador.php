@@ -184,8 +184,9 @@ class Controlador extends Controller
 
         //Obteniendo todos los usuario
         $planta = Auth::user()->planta;
+        $area = Auth::user()->area;
         $id_logeado = Auth::user()->id;
-        $usuarios_planta = DB::select("SELECT nombre_completo FROM USERS WHERE planta LIKE $planta AND  id != $id_logeado");
+        $usuarios_planta = DB::select("SELECT nombre_completo FROM USERS WHERE planta LIKE $planta AND area LIKE '$area' ");
         //Obteniendo todos los usuario
 
 
@@ -345,7 +346,7 @@ class Controlador extends Controller
             Session::flush(); //Manda alv la session
             Auth::logout();
             return redirect()->route('login');
-    
+            
         }
 
 
@@ -430,6 +431,12 @@ class Controlador extends Controller
         Auth::logout();
         return redirect()->route('login');
 
+    }
+
+
+
+    public function tabla_fpnc(){
+        return view('user.tabla_fpnc_pendientes');
     }
 
 

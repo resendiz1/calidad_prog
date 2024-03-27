@@ -13,7 +13,7 @@
                 </div>
 
 
-<form action="{{route('login.intro')}}" method="POST">
+<form action="{{asset(route('login.intro'))}}" method="POST">
     @csrf
 
                 <div class="row justify-content-center mt-3">

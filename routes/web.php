@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::view('/user/fmp_por_revisar', 'user.fmp_por_revisar')->name('por_revisar');
-Route::view('/user/fpnc', 'user.fpnc_rellenar');
+
 
 
 // Route::view('/buscador_fmp', 'buscador_fmp');
@@ -50,6 +50,7 @@ Route::get('/admin/administrar_usuarios/{usuario}/editar', [Controlador::class, 
 Route::patch('/admin/administrar_usuarios/{usuario}/editar',[Controlador::class, 'usuarios_update']  )->name('usuarios.update')->middleware('auth:adminis');
 Route::get('/admin/administrar_usuarios/{usuario}/eliminar', [Controlador::class, 'eliminar_usuario'])->name('eliminar.usuario')->middleware('auth:adminis');
 Route::delete('/admin/administrar_usuarios/{usuario}/eliminar/destroy',[Controlador::class, 'usuario_destruir'])->name('usuario.destruir')->middleware('auth:adminis');
+
 Route::get('/admin/busqueda', [Controlador::class, 'busqueda_fmp'])->name('busqueda.fmp');
 Route::post('/admin/busqueda', [Controlador::class, 'buscados_fmp'])->name('buscados.fmp');
 
@@ -68,9 +69,12 @@ Route::get('/user/fmp_pendientes_revisar', [Controlador::class, 'pendientes_revi
 
 Route::get('/user/fmp_pendientes_revisar/{fmp}/fmp', [Controlador::class, 'fmp_revisar'])->name('fmp.revisar')->middleware('auth');
 Route::patch('/user/fmp_pendientes_revisar/{fmp}/fmp/revisado', [Controlador::class, 'fmp_revisado'])->name('fmp.revisado');
+Route::view('/user/fpnc', 'user.fpnc_rellenar');
+Route::get('/user/fpnc', [Controlador::class, 'tabla_fpnc'])->name('tabla.fpnc');
+Route::view('/user/fpnc/rellenar', 'user.fpnc_rellenar')->name('fpnc.rellenar');
 
 
 
-Route::post('/salido', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');
+Route::post('/user', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');
 Route::post('/', [Controlador::class, 'login'])->name('login.intro');
 Route::view('/', 'login')->name('login');
