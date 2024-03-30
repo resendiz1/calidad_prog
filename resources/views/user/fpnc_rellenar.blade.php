@@ -1,7 +1,13 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')    
+@include('assets.nav')  
+@section('title', 'FO/GP/CC/001/001')  
 <br>
+
+
+<form action="{{route('fpnc.agregar')}}" method="POST">
+@csrf
+
 
 <div class="container bg-white  p-5 sombra"> <!--Contenedor de todo -->
 
@@ -56,32 +62,42 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 mt-2 col-lg-4">
             <div class="row">
-                <div class="col-5">
-                    <span class="fw-bold">Fecha de emisión: </span>
-                </div>
-                <div class="col-6">
-                    24 de Febrero del 2024
+                <div class="col-auto">
+                    <span><b> FOLIO DE:  <i> FO/GP/CC/070/01</i> </b> </span> 
+                    <span class="text-danger fw-bold mx-2">{{$fmp->folio}}</span>
+                    <input type="hidden" name="folio_fmp" value="{{$fmp->folio}}">
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-12 mt-2 col-lg-4">
-            <!-- Espacio en blanco  -->
+        <div class="col-sm-12 col-md-12 mt-2 col-lg-5">
+            <div class="row">
+                <div class="col-auto">
+                    <span class="fw-bold">Fecha de emisión: </span>
+                </div>
+                <div class="col-6">
+                   {{$fecha}}
+                   <input type="hidden" name="fecha" value="{{$fecha}}">
+                </div>
+            </div>
         </div>
 
 
-        <div class="col-sm-12 col-md-12 mt-2 col-lg-4">
+        <div class="col-sm-12 col-md-12 mt-2 col-lg-3">
             <div class="row">
-                <div class="col-5">
+                <div class="col-auto">
                     <span class="fw-bold">Folio: </span>
                 </div>
-                <div class="col-6">
-                   <span class="text-danger">
-                    PL3-01
+                <div class="col-auto text-danger">
+                    <i class="fa fa-lock mx-1"></i>
+                   <span>
+                    Por generar
                    </span>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 <!-- fecha y folio -->
@@ -94,23 +110,14 @@
 <div class="container mt-3 p-3">
     <div class="row d-flex justify-content-around border">
 
-        <div class="col-sm-12 col-md-6 col-lg-3  p-3">
-            <div class="form-check">
-                <input class="form-check-input p-2" type="checkbox" value="" id="materia_prima">
-                <label class="form-check-label h5" for="materia_prima">
-                    Materia Prima
-                </label>
-              </div>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="material" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-secondary" value="materia_prima" for="btnradio1">Materia Prima</label>
+          
+            <input type="radio" class="btn-check" value="material_empaque" name="material" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradio2">Material de empaque</label>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-3  p-3">
-            <div class="form-check">
-                <input class="form-check-input p-2" type="checkbox" value="" id="material_empaque">
-                <label class="form-check-label h5" for="material_empaque">
-                    Material de Empaque
-                </label>
-              </div>
-        </div>
 
     </div>
 </div>
@@ -128,11 +135,12 @@
     <div class="row border p-4 d-flex justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-4 mt-2">
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <span class="fw-bold">Proveedor: </span>
                 </div>
                 <div class="col-6">
-                    <span>Nombre proveedor</span>
+                    <span>{{$fmp->proveedor}}</span>
+                    <input type="hidden" name="proveedor" value="{{$fmp->proveedor}}">
                 </div>
             </div>
         </div>
@@ -142,7 +150,8 @@
                     <span class="fw-bold">Producto: </span>
                 </div>
                 <div class="col-6">
-                    <span>Nombre producto</span>
+                    <span>{{$fmp->producto}}</span>
+                    <input type="hidden" name="producto" value="{{$fmp->producto}}">
                 </div>
             </div>
         </div>
@@ -152,7 +161,8 @@
                     <span class="fw-bold">Presentación: </span>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control form-control-sm">
+                    <input type="text" name="presentacion" value="{{old('presentacion')}}" class="form-control form-control-sm">
+                    {!!$errors->first('presentacion', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
                 </div>
             </div>
         </div>
@@ -172,13 +182,14 @@
 <div class="container mt-4 border">
     <div class="row p-3 d-flex justify-content-center">
 
-        <div class="col-sm-12 col-md-5  col-lg-3 mt-3">
-            <div class="row">
-                <div class="col-4">
+        <div class="col-sm-12 col-md-5  col-lg-6 mt-3 text-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-auto">
                     <span class="fw-bold">Lote: </span>
                 </div>
-                <div class="col-6">
-                    <span>Numero del lote</span>
+                <div class="col-auto">
+                    <span>{{$fmp->lote}}</span>
+                    <input type="hidden" value="{{$fmp->lote}}" name="lote">
                 </div>
             </div>
         </div>
@@ -186,14 +197,15 @@
 
 
 
-        <div class="col-sm-12 col-md-5  col-lg-3 mt-3">
-            <div class="row">
-                <div class="col-4">
+        <div class="col-sm-12 col-md-5  col-lg-6 mt-3 text-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-auto">
                     <span class="fw-bold">Cantidad: </span>
                 </div>
 
-                <div class="col-sm-4 col-md-4 col-lg-5 p-0">  
-                    <input type="text" class="form-control form-control-sm">
+                <div class="col-sm-4 col-md-4 col-lg-auto p-0">  
+                    <input type="text" class="form-control form-control-sm" name="cantidad" value="{{old('cantidad')}}">
+                    {!!$errors->first('cantidad', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
                 </div>
 
             </div>
@@ -222,7 +234,9 @@
             <span class="fw-bold">Desviación:</span>
         </div>
         <div class="col-12 mt-2 p-0">
-            <textarea name="" class="form-control" class="w-100 border"></textarea>
+            <textarea name="desviacion" class="form-control" class="w-100 border">{{old('desviacion')}}</textarea>
+            {!!$errors->first('desviacion', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
+            
         </div>
     </div>
 </div>
@@ -247,7 +261,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" class="form-control form-control-sm">
+                    <input type="file" name="imagen1" value="{{old('imagen1')}}" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -258,7 +272,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" class="form-control form-control-sm">
+                    <input type="file" name="imagen2" value="{{old('imagen2')}}" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -269,7 +283,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" class="form-control form-control-sm">
+                    <input type="file" name="imagen3" value="{{old('imagen3')}}" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -280,7 +294,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" class="form-control form-control-sm">
+                    <input type="file" name="imagen4" value="{{old('imagen4')}}" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -290,7 +304,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" class="form-control form-control-sm">
+                    <input type="file" name="imagen5" value="{{old('imagen5')}}" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -301,7 +315,7 @@
                     <img src="img/images.png"  alt="">
                 </div>
                 <div class="col-12">
-                    <input type="file" accept="jpeg" class="form-control form-control-sm">
+                    <input type="file" name="imagen6" value="{{old('imagen6')}}" accept="jpeg" class="form-control form-control-sm">
                 </div>
             </div>
         </div>
@@ -322,7 +336,8 @@
             <span class="fw-bold">Observaciones:</span>
         </div>
         <div class="col-12 mt-2 p-0">
-            <textarea name="" id="" class="w-100 form-control"></textarea>
+            <textarea name="observaciones" class="w-100 form-control">{{old('observaciones')}}</textarea>
+            {!!$errors->first('observaciones', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
         </div>
     </div>
 </div>
@@ -344,7 +359,7 @@
     <div class="row mt-4 justify-content-center">
         <div class="col-sm-12 col-md-3 col-lg-2 text-center mx-4">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="email">
+                <input class="form-check-input" name="notificacion_email" value="on"  type="checkbox" value="" id="email">
                 <label class="form-check-label" for="email">
                     E-mail
                 </label>
@@ -352,7 +367,7 @@
         </div>
         <div class="col-sm-12 col-md-3 col-lg-2 text-center mx-4">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="telefonica">
+                <input class="form-check-input" name="notificacion_telefonica" value="on"  type="checkbox" value="" id="telefonica">
                 <label class="form-check-label" for="telefonica">
                     Telefónica
                 </label>
@@ -360,10 +375,11 @@
         </div>
         <div class="col-sm-12 col-md-3 col-lg-2 text-center mx-4">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="otra">
+                <input class="form-check-input" name="notificacion_otra" value="on"  type="checkbox" value="" id="otra">
                 <label class="form-check-label" for="otra">
                     Otra
                 </label>
+                <input type="text" class="form-control" name="otra_notificacion">
               </div>
         </div>
     </div>
@@ -383,7 +399,8 @@
                     <span>Quien recibe la notificación</span>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Nombre / Puesto">
+                    <input type="text" name="recibe_notificacion" value="{{old('recibe_notificacion')}}" class="form-control" placeholder="Nombre / Puesto">
+                    {!!$errors->first('recibe_notificacion', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
@@ -391,7 +408,8 @@
                     <span>Quien emite la notificación</span>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Nombre / Puesto">
+                    <input type="text" name="emite_notificacion" value="{{old('emite_notificacion')}}" class="form-control" placeholder="Nombre / Puesto">
+                    {!!$errors->first('emite_notificacion', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
                 </div>
             </div>
         </div>
@@ -417,11 +435,12 @@
 
 <!-- boton de guardar todo alv -->
 
-
-
-
-
 </div><!--Cierra contenedor de todo-->
 
+
+
+
+
+</form>
 
 @endsection

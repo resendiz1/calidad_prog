@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 @include('assets.nav')
+@section('title', 'FORMATOS GENERADOS')
 
 <div class="container bg-white mt-4 mb-3 sombra border border-5">
     <div class="row">
@@ -22,33 +23,42 @@
 
 @forelse ($formatos as $formato)
     
-<a href="{{route('fmp.lleno', $formato->id)}}">
-    <div class="row p-3 resizeable-table mt-1"> 
-        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-            <span>{{$formato->fecha}} {{substr($formato->created_at, -8)}}</span>
+<a href="{{route('fmp.lleno', $formato->id)}}" class="mx-2">
+    <div class="row p-3 resizeable-table mt-1 border justify-content-center "> 
+        <div class=" col-sm-6 col-md-6 col-lg-1 p-2 border-start">
+            <b>Folio: </b> <br>
+            <span class="fw-bold text-danger">{{$formato->folio}} </span>
         </div>
         <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+            <b>Fecha: </b> <br>
+            <span>{{$formato->fecha}} <br>
+                <b> {{substr($formato->created_at, -8)}} </b> 
+            </span>
+        </div>
+        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+            <b>Producto: </b> <br>
             <span> {{$formato->producto}}</span>
         </div>
         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+            <b>Proveedor: </b> <br>
             <span>{{$formato->proveedor}}</span>
         </div>
-        <div class=" col-sm-6 col-md-6 col-lg-5 p-2 border-start">
+        <div class=" col-sm-12 col-md-12 col-lg-3 p-2 border-start text-center">
             <div class="row justify-content-center">
-                <div class="col-6 text-center">
+                <div class="col-3 text-center">
                     <span>Bascula: 
                     @if ($formato->reviso_bascula)
-                        <i class="fa fa-eye text-success mx-2"></i> </span>
+                        <i class="fa fa-check  mx-2"></i> </span>
                     @elseif ($formato->reviso_bascula=='')
-                        <i class="fa fa-clock text-danger mx-2"></i> </span>
+                        <i class="fa fa-clock mx-2"></i> </span>
                     @endif
                 </div>
-                <div class="col-6 text-center">
+                <div class="col-3 text-center">
                     <span>Producción: 
                     @if ($formato->reviso_produccion)
-                        <i class="fa fa-eye text-success mx-2"></i> </span>
+                        <i class="fa fa-check mx-2"></i> </span>
                     @elseif ($formato->reviso_produccion=='')
-                        <i class="fa fa-clock text-danger mx-2"></i> </span>
+                        <i class="fa fa-clock  mx-2"></i> </span>
                     @endif
                 </div>
             </div>

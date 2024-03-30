@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 @include('assets.nav')
+@section('title', 'Agregar Usuarios')
 
 
 
@@ -39,7 +40,7 @@
 
                 <div class="form-group">
                     <label for="" class="fw-bold">NOMBRE COMPLETO</label>
-                    <input type="text" name="nombre" class="form-control" value="{{old('nombre')}}">
+                    <input type="text" name="nombre" class="form-control" value="{{old('nombre')}}" autofocus >
                     {!!$errors->first('nombre', '<small class="text-danger">:message</small>')!!}
                 </div>
 
@@ -68,7 +69,7 @@
                     <label for="" class="fw-bold">AREA</label>
                     <select class="form-select mt-1 form-control-sm p-0 text-center" name="area" >
                         <option value="CALIDAD">CALIDAD</option>
-                        <option value="PRODUCCIÓN">PRODUCCIÓN</option>
+                        <option value="PRODUCCION">PRODUCCIÓN</option>
                         <option value="BASCULA">BASCULA</option>
                     </select>
                 </div>
@@ -113,7 +114,7 @@
 
             setTimeout(function(){
                 window.location.replace(window.location.href);
-            }, 3000);
+            }, 1500);
          });
         
     </script>

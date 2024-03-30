@@ -69,9 +69,12 @@ Route::get('/user/fmp_pendientes_revisar', [Controlador::class, 'pendientes_revi
 
 Route::get('/user/fmp_pendientes_revisar/{fmp}/fmp', [Controlador::class, 'fmp_revisar'])->name('fmp.revisar')->middleware('auth');
 Route::patch('/user/fmp_pendientes_revisar/{fmp}/fmp/revisado', [Controlador::class, 'fmp_revisado'])->name('fmp.revisado');
-Route::view('/user/fpnc', 'user.fpnc_rellenar');
+
+
+
+Route::get('/user/fpnc/{fmp}/rellenar', [Controlador::class, 'fpnc_rellenar'])->name('fpnc.rellenar');
 Route::get('/user/fpnc', [Controlador::class, 'tabla_fpnc'])->name('tabla.fpnc');
-Route::view('/user/fpnc/rellenar', 'user.fpnc_rellenar')->name('fpnc.rellenar');
+Route::post('/user/fpnc/agregar', [Controlador::class, 'fpnc_agregar'])->name('fpnc.agregar');
 
 
 

@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')    
+@include('assets.nav') 
+@section('title', Auth::user()->nombre_completo )
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Fmp;
+use App\Models\Fpnc;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -354,9 +355,9 @@ class Controlador extends Controller
 
 
 
-        $pendientes = DB::select("SELECT*FROM fmp WHERE planta=$planta");
+        $pendientes = DB::select("SELECT*FROM fmp WHERE planta=$planta ORDER BY  created_at DESC ");
 
-
+   
         return view('user.tabla_fmp_por_revisar', compact('pendientes', 'reviso'));
     }
 
@@ -436,7 +437,83 @@ class Controlador extends Controller
 
 
     public function tabla_fpnc(){
-        return view('user.tabla_fpnc_pendientes');
+        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' ");
+
+        return view('user.tabla_fpnc_pendientes', compact('fmp'));
+    }
+
+
+
+    public function fpnc_rellenar(Fmp $fmp){
+        
+        //Obteniendo la fecha
+        Carbon::setLocale(config('app.locale'));
+        $fecha = Carbon::now()->isoFormat('LL');
+        //Obteniendo la fecha
+
+        return view('user.fpnc_rellenar', compact('fmp', 'fecha'));
+    }
+
+    public function fpnc_agregar(){
+
+        request()->validate([
+            'presentacion' => 'required',
+            'cantidad' => 'required',
+            'desviacion' => 'required',
+            'observaciones' => 'required',
+            'recibe_notificacion' => 'required',
+            'emite_notificacion' => 'required'
+
+        ]);
+
+        return request();
+
+        // 'fecha', 
+        // 'folio', 
+        // 'folio_fmp', 
+        // 'materia', 
+        // 'proveedor', 
+        // 'producto', 
+        // 'presentacion', 
+        // 'lote',
+        // 'cantidad',
+        // 'desviacion',
+        // 'foto1',
+        // 'foto2',
+        // 'foto3',
+        // 'foto4',
+        // 'foto5',
+        // 'foto6',
+        // 'observaciones',
+        // 'via_notificacion',
+        // 'recibe_notificacion',
+        // 'emite_notificacion',
+        // 'usuario_logeado' ];
+
+        $fpnc = new Fpnc();
+        $fpnc->fecha = request('fecha');
+        $fpnc->folio = request('folio_fmp');
+        $fpnc->folio_fmp = request('folio_fmp');
+        $fpnc->material = request('material');
+        $fpnc->proveedor = request('proveedor');
+        $fpnc->producto = request('producto');
+        $fpnc->presentacion = request('presendiacion');
+        $fpnc->lote = request('lote');
+        $fpnc->cantidad = request('cantidad');
+        $fpnc->desviacion = request('desviacion');
+        $fpnc->observaciones = request('observaciones');
+        $fpnc->via_notificacion = request('');
+        $fpnc->save();
+        
+
+
+
+     
+
+
+
+
+        return request();
     }
 
 

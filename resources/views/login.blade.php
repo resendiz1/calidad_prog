@@ -1,5 +1,6 @@
 @extends('plantilla')
 @section('contenido')
+@section('title', 'Inicio de Sesión')
 
     <div class="container p-5 mt-5">
         <div class="row mt-5 justify-content-center">
@@ -22,7 +23,7 @@
                             <div class="input-group-icon">
                                 <span class="input-group-text"> <i class="fa fa-user p-1"></i> </span>
                             </div>
-                            <input type="text" name="email" class="form-control login" aria-describedby="input-group-icon" placeholder="Usuario">
+                            <input type="text" name="email" class="form-control login" aria-describedby="input-group-icon" placeholder="Usuario" autofocus >
                         </div>
                     </div>
                 </div>

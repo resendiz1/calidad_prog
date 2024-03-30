@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')    
+@include('assets.nav')  
+@section('title', $fmp->folio)  
  
 <br>
 
@@ -616,65 +617,63 @@
 
 <!-- CONTENEDOR DE OBSERVACIONES -->
 <div class="container mt-5">
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="row">
+  <div class="row mt-4 d-flex justify-content-around ">
 
-        <div class="col-4">
+
+        <div class="col-sm-12 col-md-12 col-lg-3">
 
           <div class="row">
             <div class="col-12">
-              <h4>OBSERVACIONES BASCULA:</h4>
+              <h6>OBSERVACIONES BASCULA:</h6>
             </div>
             <div class="col-12">
-              <p>
+              <i>
                 @if ($fmp->observaciones_bascula && $fmp->reviso_bascula)
                     {{$fmp->observaciones_bascula}}
                 @else 
                      <li>No hubo oberservaciones</li> 
                 @endif 
-              </p>
+              </i>
             </div>
           </div>
 
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-12 col-md-12 col-lg-3">
           <div class="row">
             <div class="col-12">
-              <h4>OBSERVACIONES PRODUCCION:</h4>
+              <h6>OBSERVACIONES PRODUCCION:</h6>
             </div>
             <div class="col-12">
-              <p>
+              <i>
                 @if ($fmp->observaciones_produccion && $fmp->reviso_produccion)
                 {{$fmp->observaciones_produccion}}
                 @else 
                     <li>No hubo oberservaciones</li> 
                 @endif 
-               </p>
+               </i>
             </div>
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-12 col-md-12 col-lg-3">
           <div class="row">
             <div class="col-12">
-              <h4>OBSERVACIONES CALIDAD:</h4>
+              <h6>OBSERVACIONES CALIDAD:</h6>
             </div>
-            <div class="col-12">
-              <p>
+            <div class="col-12 text-justify ">
+              <i>
                 @if ($fmp->observaciones_realizador)
                 {{$fmp->observaciones_realizador}}
                 @else 
                     <li>No hubo oberservaciones</li> 
                 @endif 
-               </p>
+               </i>
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
+
   </div>
 </div>
 <!-- CONTENEDOR DE OBSERVACIONES -->

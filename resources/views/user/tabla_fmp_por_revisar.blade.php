@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 @include('assets.nav')
+@section('title', 'FORMATOS PENDIENTES')
 
 <div class="container mt-4 mb-3 ">
     <div class="row d-flex justify-content-center">
@@ -32,17 +33,25 @@
             @if (!$pendiente->$reviso)
                 <a href="{{route('fmp.revisar', $pendiente->id)}}">
                     <div class="row p-3 resizeable-table mt-1"> 
-                        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+                        <div class=" col-sm-6 col-md-5 col-lg-2 p-2 border-start">
+                            <b>Folio: </b> <br>
+                            <span class="text-danger fw-bold">{{$pendiente->folio}}</span>
+                        </div>
+                        <div class=" col-sm-6 col-md-5 col-lg-2 p-2 border-start">
+                            <b>Fecha: </b> <br>
                             <span>{{$pendiente->fecha}}</span>
                         </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+                        <div class=" col-sm-6 col-md-5 col-lg-3 p-2 border-start">
+                            <b>Producto:</b> <br>
                         <span> {{$pendiente->producto}}</span>
                         </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+                            <b>Proveedor: </b> <br>
                             <span>{{$pendiente->proveedor}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
-                            <span>REALIZO: {{$pendiente->usuario_logeado}}</span>
+                            <b>Realizo: </b> <br>
+                            <span> {{$pendiente->usuario_logeado}}</span>
                         </div>
                     </div>
                 </a>    
@@ -54,6 +63,7 @@
             @endif
 
         @empty
+        <li>No hay pendientes</li>
         @endforelse
 
 

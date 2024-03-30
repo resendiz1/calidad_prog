@@ -18,24 +18,39 @@
     <div class="row">
         <div class="col-12 bg-light p-4">
 
-        
-                <a href="{{route('fpnc.rellenar')}}">
+        @forelse ($fmp as $ifmp)
+               
+                <a href="{{route('fpnc.rellenar', $ifmp->id)}}">
                     <div class="row p-3 resizeable-table mt-1"> 
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <span>FECHA</span>
-                        </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
-                            <span> PRODUCTO</span>
+                            <b>Folio: </b> <br>
+                            <span class="fw-bold text-danger">{{$ifmp->folio}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <span>PROVEEDOR</span>
+                            <b>Producto: </b> <br>
+                            <span>{{$ifmp->producto}}</span>
                         </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-5 p-2 border-start">
-                            <span> <b class="mx-2"> REALIZO: </b> NOMBRE DE LA PERSONA QUE REALIZO</span>
+                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+                            <b>Proveedor: </b> <br>
+                            <span>{{$ifmp->proveedor}}</span>
                         </div>
+                        <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
+                          <b>Realizo: </b> <br>
+                          <span>{{$ifmp->usuario_logeado}}</span>
+                        </div>
+                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+                            <b>Dictamen Final: </b> <br>
+                            <span class="text-danger fw-bold">
+                                <i class="fa fa-square-xmark"></i>
+                                {{$ifmp->dictamen_final}}
+                            </span>
+                          </div>
                     </div>
                 </a>
 
+         @empty
+            
+        @endforelse
 
         </div>
     </div>

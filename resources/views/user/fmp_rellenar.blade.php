@@ -1,6 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 @include('assets.nav')
+@section('title', 'FO/GP/CC/070/01')
 
 
 <br>
