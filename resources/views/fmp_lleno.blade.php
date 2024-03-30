@@ -168,15 +168,15 @@
             <h6 class="m-2">{{$fmp->linea_transportista}}</h6>
         </div>
 
-        <div class="col-10 mt-3 fondo-titulos border border-gray p-0">
+        <div class="col-10 mt-3 fondo-titulos border border-gray ">
             <h6 class="mt-1">OPERADOR</h6>
         </div>
 
-        <div class="col-10 p-0">
+        <div class="col-10 ">
             <h6 class="m-2">{{$fmp->nombre_operador}}</h6>
         </div>
 
-        <div class="col-10 p-0 fondo-titulos mt-3">        
+        <div class="col-10  fondo-titulos mt-3">        
             <h6 class="mt-2">PLACAS DEL TRACTO O TORTON :</h6>
         </div>
 
@@ -184,7 +184,7 @@
             <h6 class="m-2">{{$fmp->placas_transporte}}</h6>
         </div>
 
-        <div class="col-10 p-0 fondo-titulos mt-3">        
+        <div class="col-10  fondo-titulos mt-3">        
           <h6 class="mt-2">PLACAS CAJA :</h6>
         </div>
 
@@ -599,9 +599,18 @@
         <div class="col-6 text-center mt-4">
           <h5 class="mt-3">DICTAMEN FINAL</h5>
         </div>
-        <div class="col-6 text-center mt-4 bg-success text-white">
-            <h6 class="m-3">{{$fmp->dictamen_final}}</h6>
-        </div>
+        @if ($fmp->dictamen_final == 'ACEPTADO')
+          <div class="col-6 text-center mt-4 bg-success text-white py-2">
+             <li class="fa fa-circle-check"></li>
+              <h6 class="">{{$fmp->dictamen_final}}</h6>
+          </div>
+            
+        @else
+        <div class="col-6 text-center mt-4 bg-danger text-white py-2">
+          <li class="fa fa-circle-xmark"></li>
+          <h6>{{$fmp->dictamen_final}}</h6>
+        </div>   
+        @endif
       </div>
 
     </div>

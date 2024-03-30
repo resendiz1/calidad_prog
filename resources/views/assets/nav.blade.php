@@ -14,21 +14,9 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center mb-0">
                     <h6>
-
-
-
                         @if (isset(Auth::user()->nombre_completo))
                             {{  Auth::user()->nombre_completo}}
                         @endif
-
-                        
-                        @if (isset(Auth::guard('adminis')->user()->nombre_completo))
-                        
-                        @endif
-
-
-
-
                     </h6>
                 </div>
                 <div class="col-12 text-center mt-0">
