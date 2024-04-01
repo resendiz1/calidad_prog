@@ -44,6 +44,20 @@
 
 
 
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
+            <a href="{{route('fvu.rellenar')}}">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="mx-auto">RELLENAR FORMATO VERIFICACION DE UNIDADES FO/GP/CC/070/05</h5>
+                    </div>
+                    <div class="col-12">
+                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                    </div>
+                </div>
+            </a>
+        </div>        
+
+
 
 
 

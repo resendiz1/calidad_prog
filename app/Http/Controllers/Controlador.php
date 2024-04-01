@@ -519,4 +519,15 @@ class Controlador extends Controller
 
 
 
+    public function fvu_rellenar(){
+
+        return view('user.fvu_rellenar');
+    }
+
+    public function fvu_agregar(){
+        return request();
+    }
+
+
+
 }

@@ -78,6 +78,10 @@ Route::post('/user/fpnc/agregar', [Controlador::class, 'fpnc_agregar'])->name('f
 
 
 
+Route::get('/user/fvu', [Controlador::class, 'fvu_rellenar'])->name('fvu.rellenar');
+
+Route::post('/user/fvu/post', [Controlador::class, 'fvu_agregar'])->name('fvu.agregar');
+
 Route::post('/user', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');
 Route::post('/', [Controlador::class, 'login'])->name('login.intro');
 Route::view('/', 'login')->name('login');
