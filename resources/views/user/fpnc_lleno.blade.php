@@ -5,9 +5,6 @@
 <br>
 
 
-<form action="{{route('fpnc.agregar')}}" enctype="multipart/form-data" method="POST">
-@csrf
-
 
 <div class="container bg-white  p-5 sombra"> <!--Contenedor de todo -->
 
@@ -64,8 +61,8 @@
             <div class="row">
                 <div class="col-auto">
                     <span><b> FOLIO DE:  <i> FO/GP/CC/070/01</i> </b> </span> 
-                    <span class="text-danger fw-bold mx-2">{{$fmp->folio}}</span>
-                    <input type="hidden" name="folio_fmp" value="{{$fmp->folio}}">
+                    <span class="text-danger fw-bold mx-2">{{$fpnc->folio}}</span>
+                    <input type="hidden" name="folio_fpnc" value="{{$fpnc->folio}}">
                 </div>
             </div>
         </div>
@@ -76,8 +73,8 @@
                     <span class="fw-bold">Fecha de emisión: </span>
                 </div>
                 <div class="col-6">
-                   {{$fecha}}
-                   <input type="hidden" name="fecha" value="{{$fecha}}">
+                   {{$fpnc->fecha}}
+                   <input type="hidden" name="fecha" value="{{$fpnc->fecha}}">
                 </div>
             </div>
         </div>
@@ -87,12 +84,12 @@
             <div class="row">
                 <div class="col-auto">
                     <span class="fw-bold">Folio: </span>
-                    <input type="hidden" name="id_fmp" value="{{$fmp->id}}">
+                    <input type="hidden" name="id_fpnc" value="{{$fpnc->id}}">
                 </div>
                 <div class="col-auto text-danger">
                     <i class="fa fa-lock mx-1"></i>
                    <span class="fw-bold">
-                    {{$fmp->folio}}
+                    {{$fpnc->folio}}
                    </span>
                 </div>
             </div>
@@ -109,17 +106,10 @@
 
 <!-- materia prima, material de empaque -->
 <div class="container mt-3 p-3">
-    <div class="row d-flex justify-content-around border">
-
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" value="materia_prima" name="material" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-secondary"  for="btnradio1">Materia Prima</label>
-          
-            <input type="radio" class="btn-check" value="material_empaque" name="material" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-secondary" for="btnradio2">Material de empaque</label>
+    <div class="row d-flex justify-content-center border">
+        <div class="col-8 text-center">
+            <h4>{{$fpnc->materia}}</h4>
         </div>
-
-
     </div>
 </div>
 
@@ -140,8 +130,7 @@
                     <span class="fw-bold">Proveedor: </span>
                 </div>
                 <div class="col-6">
-                    <span>{{$fmp->proveedor}}</span>
-                    <input type="hidden" name="proveedor" value="{{$fmp->proveedor}}">
+                    <span>{{$fpnc->proveedor}}</span>
                 </div>
             </div>
         </div>
@@ -151,8 +140,7 @@
                     <span class="fw-bold">Producto: </span>
                 </div>
                 <div class="col-6">
-                    <span>{{$fmp->producto}}</span>
-                    <input type="hidden" name="producto" value="{{$fmp->producto}}">
+                    <span>{{$fpnc->producto}}</span>
                 </div>
             </div>
         </div>
@@ -162,8 +150,7 @@
                     <span class="fw-bold">Presentación: </span>
                 </div>
                 <div class="col-6">
-                    <input type="text" name="presentacion" value="{{old('presentacion')}}" class="form-control form-control-sm" autofocus>
-                    {!!$errors->first('presentacion', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
+                    <span>{{$fpnc->presentacion}}</span>
                 </div>
             </div>
         </div>
@@ -189,8 +176,7 @@
                     <span class="fw-bold">Lote: </span>
                 </div>
                 <div class="col-auto">
-                    <span>{{$fmp->lote}}</span>
-                    <input type="hidden" value="{{$fmp->lote}}" name="lote">
+                    <span>{{$fpnc->lote}}</span>
                 </div>
             </div>
         </div>
@@ -205,8 +191,7 @@
                 </div>
 
                 <div class="col-sm-4 col-md-4 col-lg-auto p-0">  
-                    <input type="text" class="form-control form-control-sm" name="cantidad" value="{{old('cantidad')}}">
-                    {!!$errors->first('cantidad', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
+                    <span>{{$fpnc->cantidad}}</span>
                 </div>
 
             </div>
@@ -235,9 +220,7 @@
             <span class="fw-bold">Desviación:</span>
         </div>
         <div class="col-12 mt-2 p-0">
-            <textarea name="desviacion" class="form-control" class="w-100 border">{{old('desviacion')}}</textarea>
-            {!!$errors->first('desviacion', '<li class="text-danger text-justify fw-bold">:message</li>')!!}
-            
+            <p>{{$fpnc->desviacion}}</p>            
         </div>
     </div>
 </div>
@@ -259,10 +242,7 @@
         <div class="col-sm-6 col-md-4 col-lg-4 p-4">
             <div class="row">
                 <div class="col-12 border text-center" id="imagen1">
-                    <img src="img/images.png"  alt="">
-                </div>
-                <div class="col-12">
-                    <input type="file" id="foto1" name="imagen1" value="{{old('imagen1')}}" class="form-control form-control-sm">
+                    <img src="{{Storage::url($fpnc->foto1)}}" class="img-fluid"  alt="">
                 </div>
             </div>
         </div>
@@ -422,101 +402,6 @@
 
 </div><!--Cierra contenedor de todo-->
 
-
-</form>
-
-
-<script>
-
-// El codigo que oculta el input 
-{
-    document.getElementById('vbtn-radio1').addEventListener('change', function(){
-        if(this.checked){
-            document.getElementById('otra').style.display = 'block'
-            document.setAttribute('required')
-        }
-        else{
-            document.getElementById('otra').style.display = 'none'
-        }
-    });
-
-
-    document.getElementById('vbtn-radio2').addEventListener('change', function(){
-        if(this.checked){
-            document.getElementById('otra').style.display = 'none'
-        }
-    })
-
-    document.getElementById('vbtn-radio3').addEventListener('change', function(){
-        if(this.checked){
-            document.getElementById('otra').style.display = 'none'
-        }
-    })
-}
-// El codigo que oculta el input 
-
-
-
-
-
-
-
-//El codigo de la  vista previa de las imagenes
-{
-    
-// imagen -> contenedor
-// foto -> input
-document.getElementById('foto1').addEventListener('change', function(){
-
-    const file = this.files[0]
-
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(e){
-            const preview = document.getElementById('imagen1');
-            preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-        }
-        reader.readAsDataURL(file)
-    }
-})
-
-
-
-document.getElementById('foto2').addEventListener('change', function(){
-
-const file = this.files[0]
-
-if(file){
-    const reader = new FileReader();
-    reader.onload = function(e){
-        const preview = document.getElementById('imagen2');
-        preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-    }
-    reader.readAsDataURL(file)
-}
-})
-
-
-
-
-document.getElementById('foto3').addEventListener('change', function(){
-
-const file = this.files[0]
-
-if(file){
-    const reader = new FileReader();
-    reader.onload = function(e){
-        const preview = document.getElementById('imagen3');
-        preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-    }
-    reader.readAsDataURL(file)
-}
-})
-
-}
-//El codigo de la  vista previa de las imagenes
-
-</script>
 
 
 

@@ -5,7 +5,7 @@
 <div class="container bg-white mt-4 mb-3 sombra border border-5">
     <div class="row">
         <div class="col-12 text-center p-3">
-            <h3 class="fw-bold">FORMATOS DE PRODUCTO NO CONFORME PENDIENTES</h3>
+            <h3 class="fw-bold">FORMATOS DE PRODUCTO NO CONFORME</h3>
         </div>
     </div>
 </div>
@@ -18,31 +18,31 @@
     <div class="row">
         <div class="col-12 bg-light p-4">
 
-        @forelse ($fmp as $ifmp)
+        @forelse ($fpnc as $ifpnc)
                
-                <a href="{{route('fpnc.rellenar', $ifmp->id)}}">
+                <a href="{{route('fpnc.lleno', $ifpnc->id)}}">
                     <div class="row p-3 resizeable-table mt-1"> 
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
                             <b>Folio: </b> <br>
-                            <span class="fw-bold text-danger">{{$ifmp->folio}}</span>
+                            <span class="fw-bold text-danger">{{$ifpnc->folio}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
                             <b>Producto: </b> <br>
-                            <span>{{$ifmp->producto}}</span>
+                            <span>{{$ifpnc->producto}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
                             <b>Proveedor: </b> <br>
-                            <span>{{$ifmp->proveedor}}</span>
+                            <span>{{$ifpnc->proveedor}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
                           <b>Realizo: </b> <br>
-                          <span>{{$ifmp->usuario_logeado}}</span>
+                          <span>{{$ifpnc->usuario_logeado}}</span>
                         </div>
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <b>Dictamen: </b> <br>
-                            <span class="fw-bold text-danger">
-                                <i class="fa fa-square-xmark"></i>
-                                {{$ifmp->dictamen_final}}
+                            <b>Proveedor: </b> <br>
+                            <span class="fw-bold">
+                                
+                                {{$ifpnc->proveedor}}
                             </span>
                           </div>
                     </div>

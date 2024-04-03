@@ -437,7 +437,7 @@ class Controlador extends Controller
 
 
     public function tabla_fpnc(){
-        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' ");
+        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' AND fpnc_lleno LIKE '' ");
 
         return view('user.tabla_fpnc_pendientes', compact('fmp'));
     }
@@ -456,6 +456,8 @@ class Controlador extends Controller
 
     public function fpnc_agregar(){
 
+
+
         request()->validate([
             'presentacion' => 'required',
             'cantidad' => 'required',
@@ -466,55 +468,87 @@ class Controlador extends Controller
 
         ]);
 
-        return request();
 
-        // 'fecha', 
-        // 'folio', 
-        // 'folio_fmp', 
-        // 'materia', 
-        // 'proveedor', 
-        // 'producto', 
-        // 'presentacion', 
-        // 'lote',
-        // 'cantidad',
-        // 'desviacion',
-        // 'foto1',
-        // 'foto2',
-        // 'foto3',
-        // 'foto4',
-        // 'foto5',
-        // 'foto6',
-        // 'observaciones',
-        // 'via_notificacion',
-        // 'recibe_notificacion',
-        // 'emite_notificacion',
-        // 'usuario_logeado' ];
+
+
+        $foto1 = '';
+        $foto2 = '';
+        $foto3 = '';
+        $otra_notificacion = '';
+
+
+        if(request('imagen1')){
+            $foto1 = request('imagen1')->store();
+        }
+        if(request('imagen2')){
+            $foto2 = request('imagen2')->store();
+        }
+        if(request('imagen3')){
+            $foto3 = request('imagen3')->store();
+        }
+
+        if(request('notificacion') == 'otra' ){
+            $otra_notificacoin = request('otra_notificacion');
+        }
+
+
+
 
         $fpnc = new Fpnc();
         $fpnc->fecha = request('fecha');
         $fpnc->folio = request('folio_fmp');
         $fpnc->folio_fmp = request('folio_fmp');
-        $fpnc->material = request('material');
+        $fpnc->materia = request('material');
         $fpnc->proveedor = request('proveedor');
         $fpnc->producto = request('producto');
-        $fpnc->presentacion = request('presendiacion');
+        $fpnc->presentacion = request('presentacion');
         $fpnc->lote = request('lote');
         $fpnc->cantidad = request('cantidad');
         $fpnc->desviacion = request('desviacion');
+        $fpnc->foto1 = $foto1;
+        $fpnc->foto2 = $foto2;
+        $fpnc->foto3 = $foto3;
         $fpnc->observaciones = request('observaciones');
-        $fpnc->via_notificacion = request('');
+        $fpnc->via_notificacion = request('notificacion');
+        $fpnc->otra_notificacion = $otra_notificacion;
+        $fpnc->recibe_notificacion = request('recibe_notificacion');
+        $fpnc->emite_notificacion = request('emite_notificacion');
+        $fpnc->usuario_logeado = request('usuario_logeado');
+ 
         $fpnc->save();
         
+        $fmp = Fmp::findOrFail(request('id_fmp'));
+        $fmp->fpnc_lleno = 'llenado';
+        $fmp->save();
 
 
 
-     
+    
+        return back();
 
-
-
-
-        return request();
     }
+
+
+
+
+
+    public function fpnc_generados(){
+
+        $fpnc = DB::select("SELECT*FROM fpnc ORDER BY created_at DESC");
+        return view('user.tabla_fpnc_llenos', compact('fpnc'));
+
+    }
+
+
+
+
+
+    public function fpnc_lleno(Fpnc $fpnc){
+        
+        return view('user.fpnc_lleno', compact('fpnc')); 
+    }
+
+
 
 
 
@@ -525,7 +559,7 @@ class Controlador extends Controller
     }
 
     public function fvu_agregar(){
-        return request();
+        
     }
 
 

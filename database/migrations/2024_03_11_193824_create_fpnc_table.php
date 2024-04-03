@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('fpnc', function (Blueprint $table) {
             $table->id();
-            $table->string('fecha');
             $table->string('folio');
+            $table->string('fecha');
             $table->string('folio_fmp');  //Va ligado al folio del formato de materia prima
             $table->string('materia');
             $table->string('proveedor');
@@ -26,11 +26,9 @@ return new class extends Migration
             $table->string('foto1')->nullable();
             $table->string('foto2')->nullable();
             $table->string('foto3')->nullable();
-            $table->string('foto4')->nullable();
-            $table->string('foto5')->nullable();
-            $table->string('foto6')->nullable();
             $table->string('observaciones')->nullable();
             $table->string('via_notificacion');
+            $table->string('otra_notificacion')->nullable();
             $table->string('recibe_notificacion');
             $table->string('emite_notificacion');
             $table->string('usuario_logeado');

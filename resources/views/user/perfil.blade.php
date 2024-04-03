@@ -5,23 +5,26 @@
 
 
 
+
+
+
 <!-- MENU DE OPCIONES -->
-<div class="container-fluid mt-5 menu">
+<div class="container mt-5 p-5 ">
     <div class="row d-flex justify-content-around">
         
 
 
-
     @if (Auth::user()->area == 'CALIDAD')
             
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-2 sombra btn resizeable-div   border border-5">
             <a href="{{route('fmp.rellenar')}}">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/070/01</h5>
+                        <h6 class="mx-auto mt-3">RECEPCIÓN MATERIA PRIMA</h6>
+                        <li>FO/GP/CC/070/01</li>
                     </div>
                     <div class="col-12">
-                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                        <i class="fa fa-pencil fa-2x mt-2"></i>
                     </div>
                 </div>
             </a>
@@ -29,14 +32,15 @@
 
 
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-2 sombra btn resizeable-div   border border-5">
             <a href="{{route('tabla.fpnc')}}">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mx-auto">RELLENAR FORMATO FO/GP/CC/001/001 PENDIENTES</h5>
+                        <h6 class="mx-auto mt-3">PRODUCTO NO CONFORME</h6>
+                        <li>FO/GP/CC/001/001</li>
                     </div>
                     <div class="col-12">
-                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                        <i class="fa fa-pencil fa-2x mt-2"></i>
                     </div>
                 </div>
             </a>
@@ -44,14 +48,15 @@
 
 
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  p-5 border border-5">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-2 sombra btn resizeable-div   border border-5">
             <a href="{{route('fvu.rellenar')}}">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mx-auto">RELLENAR FORMATO VERIFICACION DE UNIDADES FO/GP/CC/070/05</h5>
+                        <h6 class="mx-auto mt-3">VERIFICACIÓN DE UNIDADES</h6>
+                        <li>FO/GP/CC/070/05</li>
                     </div>
                     <div class="col-12">
-                        <i class="fa fa-pencil fa-3x mt-2"></i>
+                        <i class="fa fa-pencil mt-2 fa-2x"></i>
                     </div>
                 </div>
             </a>
@@ -64,33 +69,47 @@
 
 
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div p-5 border border-5 ">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-2 sombra btn resizeable-div  border border-5 ">
             <a href="{{route('fmp.generados')}}">
                 <div class="row">
-                    <div class="col-12">
-                        <h5 class="mx-auto">DOCUMENTOS GENERADOS</h5>
+                    <div class="col-12 mt-3">
+                        <h6 class="mx-auto">DOCUMENTOS GENERADOS</h6>
+                        <li>FO/GP/CC/070/01</li>
                     </div>
                     <div class="col-12">
-                        <i class="fa-solid fa-magnifying-glass fa-3x mt-3"></i>
+                        <i class="fa-solid fa-magnifying-glass fa-2x mt-3"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-2 sombra btn resizeable-div  border border-5 ">
+            <a href="{{route('fpnc.generados')}}">
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <h6 class="mx-auto">DOCUMENTOS GENERADOS</h6>
+                        <li>FO/GP/CC/001/001</li>
+                    </div>
+                    <div class="col-12">
+                        <i class="fa-solid fa-magnifying-glass fa-2x mt-3"></i>
                     </div>
                 </div>
             </a>
         </div>
 
 
+        
+
     @else    
 
-
-
-    
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-4 sombra btn resizeable-div p-5 border border-5 w-100">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  border border-5 ">
             <div class="row">
                 <a href="{{route('pendientes.revisar')}}">
                     <div class="col-12">
                         <p class="mx-auto h5">FORMATOS POR REVISAR</p>
                     </div>
                     <div class="col-12">
-                        <i class="fa fa-eye fa-3x mt-3"></i>
+                        <i class="fa fa-eye mt-3 fa-2x"></i>
                     </div>
                 </a>
             </div>
@@ -98,10 +117,19 @@
     @endif
         
         
+
+
+
     </div>
 </div>
 
 <!-- MENU DE OPCIONES -->
+
+
+
+
+
+
 
 
 

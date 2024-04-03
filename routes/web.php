@@ -77,10 +77,17 @@ Route::get('/user/fpnc', [Controlador::class, 'tabla_fpnc'])->name('tabla.fpnc')
 Route::post('/user/fpnc/agregar', [Controlador::class, 'fpnc_agregar'])->name('fpnc.agregar');
 
 
+Route::get('/user/fpnc/generados', [Controlador::class, 'fpnc_generados'] )->name('fpnc.generados');
+
+
+Route::get('user/fpnc/{fpnc}/lleno', [Controlador::class, 'fpnc_lleno'])->name('fpnc.lleno');
+
+
 
 Route::get('/user/fvu', [Controlador::class, 'fvu_rellenar'])->name('fvu.rellenar');
 
 Route::post('/user/fvu/post', [Controlador::class, 'fvu_agregar'])->name('fvu.agregar');
+
 
 Route::post('/user', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');
 Route::post('/', [Controlador::class, 'login'])->name('login.intro');
