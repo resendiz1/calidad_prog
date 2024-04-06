@@ -249,39 +249,81 @@
 
   <div class="row justify-content-between">
     
+
+
     <div class="col-sm-12 col-md-12 col-lg-4 my-2">
       <div class="row justify-content-center border">
         <div class="col-5 mt-2">
-          <small class="fw-bold">HUMEDAD</small>
+          <small class="fw-bold">HUMEDAD: </small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->humedad}}%</h6>
-        </div>
+          @if ($fmp->humedad)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->humedad}} %</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
     </div>
     
 
-    <div class="col-sm-12 col-md-12 col-lg-4 my-2">
-      <div class="row justify-content-center border">
-        <div class="col-5 mt-2">
-          <small class="fw-bold">TEMP.</small>
-        </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->temperatura}}°</h6>
-        </div>   
-      </div>
-    </div>
+
+
 
     <div class="col-sm-12 col-md-12 col-lg-4 my-2">
       <div class="row justify-content-center border">
         <div class="col-5 mt-2">
-          <small class="fw-bold">PESO ESPECIFICO</small>
+          <small class="fw-bold">TEMP.: </small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->peso_especifico}} g/l</h6>
-        </div>   
+          @if ($fmp->temperatura)
+            <div class="col-6">
+                <h6 class="m-2">{{$fmp->temperatura}} °C</h6>
+            </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif 
       </div>
     </div>
+
+
+
+
+
+
+    <div class="col-sm-12 col-md-12 col-lg-4 my-2">
+      <div class="row justify-content-center border">
+        <div class="col-5 mt-2">
+          <small class="fw-bold">PESO ESPECIFICO: </small>
+        </div>
+
+          @if ($fmp->peso_especifico)
+            <div class="col-6">
+                <h6 class="m-2">{{$fmp->peso_especifico}} g/l</h6>
+            </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
+        
+      </div>
+    </div>
+
+
+
+
+
+
 
   </div>
 
@@ -294,14 +336,23 @@
 
   <div class="row justify-content-between">
     
+    
     <div class="col-sm-12 col-md-12 col-lg-4 my-2">
       <div class="row justify-content-center border">
         <div class="col-5 mt-2">
           <small class="fw-bold">GRANO DAÑADO</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->grano_maltratado}}%</h6>
-        </div>
+          @if ($fmp->grano_maltratado)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->grano_maltratado}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
     </div>
     
@@ -311,9 +362,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">GRANO QUEBRADO</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->grano_quebrado}}%</h6>
-        </div>   
+          @if ($fmp->grano_quebrado)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->grano_quebrado}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif 
       </div>
     </div>
 
@@ -322,9 +381,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">IMPUREZAS</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->impurezas}}%</h6>
-        </div>   
+          @if ($fmp->impurezas)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->impurezas}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
     </div>
 
@@ -347,9 +414,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">CANT. MUESTRA</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->cantidad_muestra}} kg</h6>
-        </div>
+          @if ($fmp->cantidad_muestra)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->cantidad_muestra}}Kg</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
     </div>
     
@@ -360,9 +435,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">*BX</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->bx}}</h6>
-        </div>   
+          @if ($fmp->bx)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->bx}}</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif 
       </div>
     </div>
    
@@ -411,9 +494,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">FLOURECENCIA</small>
         </div>
-        <div class="col-6">
-            <h6 class="m-2">{{$fmp->fluorecencia}}</h6>
-        </div>   
+          @if ($fmp->fluorecencia)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->fluorecencia}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif 
       </div>
     </div>
 
@@ -490,9 +581,17 @@
         <div class="col-5 mt-2">
           <small class="fw-bold">MATERIA EXTRAÑA</small>
         </div>
+        @if ($fmp->materia_impropio)
         <div class="col-6">
             <h6 class="m-2">{{$fmp->materia_impropio}}</h6>
-        </div>   
+        </div>  
+
+      @else
+        <div class="col-6 fondo">
+          <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+          <small class="text-info-emphasis mt-2" >No rellenado</small>
+        </div>  
+      @endif 
       </div>
     </div>
   
@@ -538,46 +637,111 @@
         <div class="col-6 text-center border">
           <h6 class="mt-2">DWG (micrones)</h6>
         </div>
-        <div class="col-6 py-2  px-0 border">
-            <h6 class="m-2">{{$fmp->dwg}}</h6>
-        </div>
+
+        @if ($fmp->dwg)
+        <div class="col-6">
+            <h6 class="m-2">{{$fmp->dwg}}%</h6>
+        </div>  
+
+        @else
+          <div class="col-6 fondo">
+            <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+            <small class="text-info-emphasis mt-2" >No rellenado</small>
+          </div>  
+        @endif
+
       </div>
+
+
 
       <div class="row">
         <div class="col-6 py-0 px-1  border">
           <h6 class="mt-2">M10 (%)</h6>
         </div>
-        <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">{{$fmp->m10}}</h6>
-        </div>
+          @if ($fmp->m10)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->m10}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo border border-white">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
+
+
+
+
+
 
       <div class="row">
         <div class="col-6 py-0 px-1  border">
           <h6 class="mt-2">M16 (%)</h6>
         </div>
-        <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">{{$fmp->m16}}</h6>
-        </div>
+          @if ($fmp->m16)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->m16}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo border border-white">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
+
+
+
+
 
       <div class="row">
         <div class="col-6 py-0 px-1  border">
           <h6 class="mt-2">M18 (%)</h6>
         </div>
-        <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">{{$fmp->m18}}</h6>
-        </div>
+            @if ($fmp->m18)
+            <div class="col-6">
+                <h6 class="m-2">{{$fmp->m18}}%</h6>
+            </div>  
+
+            @else
+              <div class="col-6 fondo border border-white">
+                <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+                <small class="text-info-emphasis mt-2" >No rellenado</small>
+              </div>  
+            @endif
       </div>
+
+
+
+
+
+
 
       <div class="row">
         <div class="col-6 py-0 px-1  border">
           <h6 class="mt-2">F(%)</h6>
         </div>
-        <div class="col-6 py-0 px-1 border">
-            <h6 class="m-2">{{$fmp->f}}</h6>
-        </div>
+          @if ($fmp->f)
+          <div class="col-6">
+              <h6 class="m-2">{{$fmp->f}}%</h6>
+          </div>  
+
+          @else
+            <div class="col-6 fondo">
+              <i class="fa-solid fa-square-xmark text-info-emphasis mt-2"></i>
+              <small class="text-info-emphasis mt-2" >No rellenado</small>
+            </div>  
+          @endif
       </div>
+
+
+
+
+
+
 
     </div>
     

@@ -478,17 +478,17 @@ class Controlador extends Controller
 
 
         if(request('imagen1')){
-            $foto1 = request('imagen1')->store();
+            $foto1 = request('imagen1')->store('public');
         }
         if(request('imagen2')){
-            $foto2 = request('imagen2')->store();
+            $foto2 = request('imagen2')->store('public');
         }
         if(request('imagen3')){
-            $foto3 = request('imagen3')->store();
+            $foto3 = request('imagen3')->store('public');
         }
 
         if(request('notificacion') == 'otra' ){
-            $otra_notificacoin = request('otra_notificacion');
+            $otra_notificacion = request('otra_notificacion');
         }
 
 
@@ -524,7 +524,7 @@ class Controlador extends Controller
 
 
     
-        return back();
+        return redirect()->route('tabla.fpnc')->with('fpnc_agregado', 'El formato  de Producto no Conforme fue agregado');
 
     }
 

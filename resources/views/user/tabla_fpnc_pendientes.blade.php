@@ -61,6 +61,27 @@
 
 
 
+{{-- alertas de que el usurio se agrego con exito o que hubo un error se desaparecen en 3 segundos--}}
+@if (session('fpnc_agregado'))
+    <script>
+         window.addEventListener('load', function(){
+            Swal.fire({
+                title: "Hecho",
+                text:  "{{session('fpnc_agregado')}}",
+                icon: "success"
+            });
+
+            setTimeout(function(){
+                window.location.replace(window.location.href);
+            }, 3500);
+         });
+        
+    </script>
+ 
+@endif
+
+
+
 
 
 @endsection

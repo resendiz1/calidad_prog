@@ -239,35 +239,71 @@
             <h5>Evidencias</h5>
         </div>
 
+
+
+
         <div class="col-sm-6 col-md-4 col-lg-4 p-4">
             <div class="row">
                 <div class="col-12 border text-center" id="imagen1">
-                    <img src="{{Storage::url($fpnc->foto1)}}" class="img-fluid"  alt="">
+                    <img src="{{Storage::url($fpnc->foto1)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#e{{$fpnc->lote}}">
                 </div>
             </div>
         </div>
 
+        <div class="modal fade" id="e{{$fpnc->lote}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <img src="{{Storage::url($fpnc->foto1)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
         <div class="col-sm-6 col-md-4 col-lg-4 p-4">
             <div class="row">
-                <div class="col-12 border text-center" id="imagen2" >
-                    <img src="img/images.png"  alt="">
-                </div>
-                <div class="col-12">
-                    <input type="file" id="foto2" name="imagen2" value="{{old('imagen2')}}" class="form-control form-control-sm">
+                <div class="col-12 border text-center" id="imagen1">
+                    <img src="{{Storage::url($fpnc->foto2)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#e{{$fpnc->via_notificacion}}">
                 </div>
             </div>
         </div>
 
+
+        <div class="modal fade" id="e{{$fpnc->via_notificacion}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <img src="{{Storage::url($fpnc->foto2)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            </div>
+            </div>
+        </div>
+
+
+
+
+
+
         <div class="col-sm-6 col-md-4 col-lg-4 p-4">
             <div class="row">
-                <div class="col-12 border text-center" id="imagen3">
-                    <img src="img/images.png"  alt="">
-                </div>
-                <div class="col-12">
-                    <input type="file" id="foto3" name="imagen3" value="{{old('imagen3')}}" class="form-control form-control-sm">
+                <div class="col-12 border text-center" id="imagen1">
+                    <img src="{{Storage::url($fpnc->foto3)}}" class="img-fluid"  data-bs-toggle="modal" data-bs-target="#e{{$fpnc->folio}}">
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="e{{$fpnc->folio}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                    <img src="{{Storage::url($fpnc->foto3)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            </div>
+            </div>
+        </div>
+
+
+
 
 
     </div>
@@ -285,9 +321,8 @@
         <div class="col-12 fondo text-center">
             <span class="fw-bold">Observaciones:</span>
         </div>
-        <div class="col-12 mt-2 p-0">
-            <textarea name="observaciones" class="w-100 form-control">{{old('observaciones')}}</textarea>
-            {!!$errors->first('observaciones', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
+        <div class="col-12 mt-2 p-3 border">
+            <p>{{$fpnc->observaciones}}</p>
         </div>
     </div>
 </div>
@@ -306,36 +341,16 @@
         </div>
     </div>
 
-    <div class="row mt-4 justify-content-around">
-        <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
-            <input type="radio" class="btn-check" name="notificacion" value="correo" id="vbtn-radio3" autocomplete="off">
-            <label class="btn btn-outline-success" for="vbtn-radio3">Correo</label>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-8 text-center">
+
+            @if ($fpnc->via_notificacion == 'otra')
+                <h5> {{$fpnc->otra_notificacion}} </h5>
+            @else
+                <h5> {{$fpnc->via_notificacion}} </h5>
+            @endif
+           
         </div>
-
-
-        <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
-            <input type="radio" class="btn-check" name="notificacion" value="telefonica" id="vbtn-radio2" autocomplete="off">
-            <label class="btn btn-outline-success" for="vbtn-radio2">Telefónica</label>
-        </div>
-
-
-
-        <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <input type="radio" class="btn-check" name="notificacion" value="otra" id="vbtn-radio1" autocomplete="off">
-                    <label class="btn btn-outline-success" for="vbtn-radio1">Otra</label>
-                </div>
-                
-                <div class="col-auto mt-1">
-                    <input type="text" class="form-control form-control-sm" name="otra_notificacion" placeholder="Mencionela" id="otra" style="display:none">
-                </div>
-            </div>
-
-        </div>
-
-
-
     </div>
 </div>
 <!-- via de notificacion -->
@@ -352,25 +367,22 @@
 
             
             <div class="row justify-content-center mt-3">
-                <div class="col-3 mt-2">
-                    <span>Quien recibe la notificación</span>
+                <div class="col-3">
+                    <span>Quien recibe la notificación: </span>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="recibe_notificacion" value="{{old('recibe_notificacion')}}" class="form-control" placeholder="Nombre / Puesto">
-                    {!!$errors->first('recibe_notificacion', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
+                    <strong>{{$fpnc->emite_notificacion}}</strong>
                 </div>
             </div>
 
 
 
             <div class="row justify-content-center mt-3">
-                <div class="col-3 mt-2">
-                    <span>Quien emite la notificación</span>
+                <div class="col-3">
+                    <span>Quien emite la notificación: </span>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="emite_notificacion" value="{{old('emite_notificacion')}}" class="form-control" placeholder="Nombre / Puesto">
-                    <input type="hidden" value="{{Auth::user()->nombre_completo}}" name="usuario_logeado">
-                    {!!$errors->first('emite_notificacion', '<small class="text-danger text-justify fw-bold">:message</small>')!!}
+                    <strong>{{$fpnc->recibe_notificacion}}</strong>
                 </div>
             </div>
 
@@ -388,10 +400,12 @@
 <!-- boton de guardar todo alv -->
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-8">
-            <button class="btn btn-success w-100">
-               <i class="fa fa-save mx-3"></i>  Guardar
-            </button>
+        <div class="col-12">
+            <h4 class="fw-bold">REVISO:</h4>
+        </div>
+        <div class="col-5 text-center bg-success text-white rounded">
+            <i class="fa fa-square-check"></i>
+            <h5 class="mt-2">{{$fpnc->usuario_logeado}}</h5>
         </div>
     </div>
 </div>

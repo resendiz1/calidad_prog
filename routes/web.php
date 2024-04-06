@@ -80,7 +80,7 @@ Route::post('/user/fpnc/agregar', [Controlador::class, 'fpnc_agregar'])->name('f
 Route::get('/user/fpnc/generados', [Controlador::class, 'fpnc_generados'] )->name('fpnc.generados');
 
 
-Route::get('user/fpnc/{fpnc}/lleno', [Controlador::class, 'fpnc_lleno'])->name('fpnc.lleno');
+Route::get('user/fpnc/{fpnc}/lleno', [Controlador::class, 'fpnc_lleno'])->name('fpnc.lleno')->middleware('auth');
 
 
 

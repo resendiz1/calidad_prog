@@ -112,10 +112,10 @@
     <div class="row d-flex justify-content-around border">
 
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" value="materia_prima" name="material" id="btnradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" value="Materia Prima" name="material" id="btnradio1" autocomplete="off" checked>
             <label class="btn btn-outline-secondary"  for="btnradio1">Materia Prima</label>
           
-            <input type="radio" class="btn-check" value="material_empaque" name="material" id="btnradio2" autocomplete="off">
+            <input type="radio" class="btn-check" value="Material de Empaque" name="material" id="btnradio2" autocomplete="off">
             <label class="btn btn-outline-secondary" for="btnradio2">Material de empaque</label>
         </div>
 
@@ -328,13 +328,13 @@
 
     <div class="row mt-4 justify-content-around">
         <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
-            <input type="radio" class="btn-check" name="notificacion" value="correo" id="vbtn-radio3" autocomplete="off">
+            <input type="radio" class="btn-check" name="notificacion" value="Correo" id="vbtn-radio3" autocomplete="off">
             <label class="btn btn-outline-success" for="vbtn-radio3">Correo</label>
         </div>
 
 
         <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
-            <input type="radio" class="btn-check" name="notificacion" value="telefonica" id="vbtn-radio2" autocomplete="off">
+            <input type="radio" class="btn-check" name="notificacion" value="Telefónica" id="vbtn-radio2" autocomplete="off">
             <label class="btn btn-outline-success" for="vbtn-radio2">Telefónica</label>
         </div>
 
@@ -343,7 +343,7 @@
         <div class="col-sm-12 col-md-3 col-lg-3 text-center m-1">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <input type="radio" class="btn-check" name="notificacion" value="otra" id="vbtn-radio1" autocomplete="off">
+                    <input type="radio" class="btn-check" name="notificacion" value="Otra" id="vbtn-radio1" autocomplete="off">
                     <label class="btn btn-outline-success" for="vbtn-radio1">Otra</label>
                 </div>
                 
