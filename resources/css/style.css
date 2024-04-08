@@ -60,7 +60,7 @@ body{
 
 /* Estilo cuando el mouse pasa por encima */
 .resizeable-div:hover {
-    background-color: #ffffffad;
+
     transform: scale(1.2); /* Hace el div 20% más grande */
 }
 
@@ -106,3 +106,4 @@ a{
     font-weight: bold;
   }
 /* el boton de regresar con el color de pabsa */
+

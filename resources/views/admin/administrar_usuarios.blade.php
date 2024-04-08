@@ -53,8 +53,8 @@
 
 @if ($resultados!=null)
 
-
-        @foreach ($resultados as $resultado)
+            @forelse ($resultados as $resultado)
+                
             
                         <div class="row p-3 resizeable-table mt-2"> 
                             <div class="col-sm-12 col-md-6 col-lg-3">
@@ -84,13 +84,16 @@
                                 </div>
                             </div>
                         </div> 
-        @endforeach
-    
-@else
 
-                        <h5>No se encontraron resultados</h5>
+                        @empty
+                         <li>No hay registros</li>
+                        @endforelse
     
-@endif   
+        @else
+
+                                <h5>No se encontraron resultados</h5>
+            
+        @endif   
 
 
 

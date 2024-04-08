@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Fvu extends Model
 {
     use HasFactory;
+
+    protected $table = 'fvu';
+
+    protected $fillable = [''];
 }

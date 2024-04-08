@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('fvu', function (Blueprint $table) {
             $table->id();
             $table->string('planta');
-            $table->string('folio_p1');
-            $table->string('folio_p2');
-            $table->string('folio_p3');
+            $table->string('folio_p1')->nullable('0');
+            $table->string('folio_p2')->nullable('0');
+            $table->string('folio_p3')->nullable('0');
             $table->string('folio');
             $table->string('fecha');
             $table->string('hora');
@@ -25,8 +25,9 @@ return new class extends Migration
             $table->string('numero_embarque');
             $table->string('operador');
             $table->string('placas_unidad');
-            $table->strnig('placas_caja');
-            $table->string('estructura');
+            $table->string('placas_caja');
+            $table->string('estractura_transporte');
+            $table->string('estructura_contenedor');
             // verificacio interna
             $table->string('piso');
             $table->string('puertas');
@@ -42,13 +43,13 @@ return new class extends Migration
             $table->string('libre_basura');
             $table->string('vidrios_estrellados');
             $table->string('sanitizacion_llantas');
-            $table->string('firma_operador');
+            $table->string('firma_operador')->nullable();
             $table->string('dictamen_final');
             $table->string('usuario_logeado');
-            $table->string('observaciones');
-            $table->string('evidencia1');
-            $table->string('evidencia2');
-            $table->string('evidencia3');
+            $table->string('observaciones')->nullable();
+            $table->string('evidencia1')->nullable();
+            $table->string('evidencia2')->nullable();
+            $table->string('evidencia3')->nullable();
 
             $table->timestamps();
         });
@@ -59,6 +60,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fvu');
     }
 };

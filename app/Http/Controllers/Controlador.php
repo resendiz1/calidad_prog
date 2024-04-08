@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Fmp;
+use App\Models\Fvu;
 use App\Models\Fpnc;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -551,15 +552,131 @@ class Controlador extends Controller
 
 
 
-
-
     public function fvu_rellenar(){
 
-        return view('user.fvu_rellenar');
+        //Obteniendo la fecha
+        Carbon::setLocale(config('app.locale'));
+        $fecha = Carbon::now()->isoFormat('LL');
+        //Obteniendo la fecha
+
+
+
+        return view('user.fvu_rellenar', compact('fecha'));
     }
 
+
+
+
+
     public function fvu_agregar(){
+
+        return request();
+        $foto1='';
+        $foto2='';
+        $foto3='';
+        $firma= '';
         
+    
+
+        request()->validate([
+            'hora' => 'required',
+            'embarque' => 'required',
+            'operador' => 'required',
+            'placas_transporte' => 'required',
+            'placas_caja' => 'required'
+        ]);
+
+
+
+        //validando fotos
+        if(request('evidencia1')){
+            $foto1 = request('evidencia1')->store();
+        }
+
+        if(request('evidencia2')){
+            $foto2 = request('evidencia2')->store();
+        }
+
+        if(request('evidencia3')){
+            $foto3 = request('evidencia3')->store();
+        }
+        if(request('firma')){
+            $firma = request('firma')->store();
+        }
+
+
+
+
+
+        //
+        $planta = Auth::user()->planta;
+
+        if($planta == 1){
+            $mas_alto = DB::select("SELECT MAX(folio_p1) as id  FROM fvu");
+            $folio = "PL1-0".$mas_alto[0]->id + 1;
+            $folio_planta = 'folio_p1';
+            $consecutivo = $mas_alto[0]->id + 1;
+
+        }
+
+
+
+        if($planta == 2){
+            $mas_alto = DB::select("SELECT MAX(folio_p2) as id  FROM fvu");
+            $folio = "PL2-0".$mas_alto[0]->id + 1;
+            $folio_planta = 'folio_p2';
+            $consecutivo = $mas_alto[0]->id +1;
+
+        }
+
+
+
+
+        if($planta == 3){
+            $mas_alto = DB::select("SELECT MAX(folio_p3) as id  FROM fvu");
+            $folio = "PL3-0".$mas_alto[0]->id + 1;
+            
+            $folio_planta = 'folio_p3'; //igualo la variable al nombre de la columna que se va a utilizar
+
+            $consecutivo = $mas_alto[0]->id + 1; //obtengo el folio mas alto y le sumo uno ara tener el folio que voy a asignar
+
+        }
+
+
+
+
+
+
+
+
+
+        //Guardando los datos del FVU
+        $fvu = new  Fvu();
+        $fvu->planta = request('planta');
+        $fvu->$folio_planta = $consecutivo;
+        $fvu->folio = $folio;
+        $fvu->fecha = request('fecha');
+        $fvu->hora = request('hora');
+        $fvu->propietario = request('propietario');
+        $fvu->linea_transportista = request('linea_transportista');
+        $fvu->numero_embarque = request('embarque');
+        $fvu->operador = request('operador');
+        $fvu->placas_unidad = request('placas_transporte');
+        $fvu->placas_caja = request('placas_caja');
+
+
+
+
+
+
+
+
+        return request();
+
+
+        
+
+
     }
 
 

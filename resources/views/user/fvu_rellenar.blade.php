@@ -4,7 +4,7 @@
 @section('title', 'FO/GP/CC/070/05')
     
 
-<form action="{{route('fvu.agregar')}}" method="POST">
+<form action="{{route('fvu.agregar')}}" enctype="multipart/form-data" method="POST">
     @csrf
         <!-- contenedor de todo -->
         <div class="container bg-white p-5 sombra mt-2">
@@ -77,7 +77,7 @@
                         <span class="centrar-verticalmente h6">Fecha:</span>
                     </div>       
                     <div class="col-auto bg-white mt-1">
-                        <span class="font-weight-bold">26 de enero del 2024</span>
+                        <span class="font-weight-bold">{{$fecha}}</span>
                         <input type="hidden" >
                     </div>
                 </div>
@@ -107,7 +107,8 @@
                         <span class="centrar-verticalmente h6">Hora de recepción:</span>
                     </div>       
                     <div class="col-auto bg-white">
-                        <input type="time" name="hora" class="form-control mt-2">
+                        <input type="time" name="hora" class="form-control mt-2" value="{{old('hora')}}">
+                        {!!$errors->first('hora', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
                     </div>
                 </dv>      
                 </div>
@@ -162,7 +163,8 @@
                     </div>
             
                     <div class="col-10 p-0">
-                        <input type="text" class="form-control mt-1" name="embarque">
+                        <input type="text" class="form-control mt-1" name="embarque" value="{{old('embarque')}}">
+                        {!!$errors->first('embarque', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
                     </div>
             
                     </div>
@@ -184,19 +186,23 @@
                     </div>
             
                     <div class="col-10 p-0">
-                        <input type="text" class="form-control mt-1" autocomplete="on" name="operador">
+                        <input type="text" class="form-control mt-1" autocomplete="on" name="operador" value="{{old('operador')}}">
+                        {!!$errors->first('operador', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
                     </div>
                     <div class="col-10 p-0 fondo-titulos mt-3">        
                         <h6 class="mt-2">PLACAS DEL TRACTO O TORTON :</h6>
                     </div>
                     <div class="col-10 p-0 mt-1">
-                        <input type="text" class="form-control" name="placas_trasnporte">
+                        <input type="text" class="form-control" name="placas_transporte" value="{{old('placas_transporte')}}">
+                        {!!$errors->first('placas_transporte', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
                     </div>
                     <div class="col-10 p-0 fondo-titulos mt-3">        
                         <h6 class="mt-2">PLACAS CAJA :</h6>
                     </div>
                     <div class="col-10 p-0 mt-1">
-                        <input type="text" class="form-control" name="placas_caja">
+                        <input type="text" class="form-control" name="placas_caja" value="{{old('placas_caja')}}">
+                        {!!$errors->first('placas_caja', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
+
                     </div>
                 </div>
             <!-- COLUMNA DE LOS "DATOS DEL TRANSPORTE" -->
@@ -229,7 +235,7 @@
 
                         <div class="row d-flex justify-content-center mt-2">
                             <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" name="vehiculo" id="camioneta1" autocomplete="off">
+                                <input type="radio" class="btn-check" name="vehiculo" id="camioneta1" autocomplete="off" checked>
                                 <label class="btn btn-outline-secondary" for="camioneta1">Camioneta</label>
                             </div>
                 
@@ -258,7 +264,7 @@
 
                         <div class="row d-flex justify-content-center">
                             <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" name="btnradio" id="redilas1" autocomplete="off">
+                                <input type="radio" class="btn-check" name="btnradio" id="redilas1" autocomplete="off" checked>
                                 <label class="btn btn-outline-secondary" for="redilas1">Redilas</label>            
                             </div>
                 
@@ -346,8 +352,8 @@
                     <div class="col-sm-12 col-md-4 col-lg-2 mt-4">
                         <label for="" class="fw-bold" >PLAGA</label>
                         <select class="form-select form-control-lg" name="plaga" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </div>
             
@@ -466,7 +472,7 @@
             
                 <div class="row mt-3">
                     <div class="col-sm-12 col-md-12 col-lg-2">
-                    <label for="" class="fw-bold">DICTAMEN FINAL: <mark> USUARIO_LOGEADO </mark></label>
+                    <label for="" class="fw-bold">DICTAMEN FINAL: <mark> {{Auth::user()->nombre_completo}} </mark></label>
             
                     <select class="form-select form-control-lg" name="dictamen_final" aria-label="Default select example">
                         <option value="LIBERADO">LIBERADO</option>
@@ -476,7 +482,7 @@
             
                     <div class="col-sm-12 col-md-12 col-lg-10 mt-2">
                         <label for="" class="fw-bold">OBSERVACIONES </label>
-                            <textarea class="form-control w-100" name="observaciones"></textarea>
+                            <textarea class="form-control w-100" name="observaciones">{{old('observaciones')}}</textarea>
                     </div>
             
                 </div>
