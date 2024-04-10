@@ -668,7 +668,7 @@
               <div class="col-6 text-center mt-4 fondo-titulos">
                 <select class="text-center form-select mt-1 form-control p-0" name="dictamen">
                   <option value="ACEPTADO">ACEPTADO</option>
-                  <option value="ACEPTADO">RECHAZADO</option>
+                  <option value="RECHAZADO">RECHAZADO</option>
                 </select>
               </div>
             </div>

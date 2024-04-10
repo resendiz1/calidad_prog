@@ -71,7 +71,9 @@ body{
 .resizeable-div:hover {
     transform: scale(1.2); /* Hace el div 20% más grande */
     background: url('../img/click.mp3') no-repeat;
+    background-color: white;
 }
+
 
 .resizeable-table{
     transition: all 0.3s ease;

@@ -438,7 +438,8 @@ class Controlador extends Controller
 
 
     public function tabla_fpnc(){
-        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' AND fpnc_lleno LIKE '' ");
+        $planta = Auth::user()->planta;
+        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' AND fpnc_lleno LIKE 'no' AND planta LIKE $planta ");
 
         return view('user.tabla_fpnc_pendientes', compact('fmp'));
     }
@@ -497,6 +498,7 @@ class Controlador extends Controller
 
         $fpnc = new Fpnc();
         $fpnc->fecha = request('fecha');
+        $fpnc->planta = request('planta');
         $fpnc->folio = request('folio_fmp');
         $fpnc->folio_fmp = request('folio_fmp');
         $fpnc->materia = request('material');
@@ -535,7 +537,8 @@ class Controlador extends Controller
 
     public function fpnc_generados(){
 
-        $fpnc = DB::select("SELECT*FROM fpnc ORDER BY created_at DESC");
+        $planta = Auth::user()->planta;
+        $fpnc = DB::select("SELECT*FROM fpnc  WHERE planta LIKE $planta ORDER BY created_at DESC ");
         return view('user.tabla_fpnc_llenos', compact('fpnc'));
 
     }
@@ -570,7 +573,7 @@ class Controlador extends Controller
 
     public function fvu_agregar(){
 
-        return request();
+
         $foto1='';
         $foto2='';
         $foto3='';
@@ -590,18 +593,18 @@ class Controlador extends Controller
 
         //validando fotos
         if(request('evidencia1')){
-            $foto1 = request('evidencia1')->store();
+            $foto1 = request('evidencia1')->store('public');
         }
 
         if(request('evidencia2')){
-            $foto2 = request('evidencia2')->store();
+            $foto2 = request('evidencia2')->store('public');
         }
 
         if(request('evidencia3')){
-            $foto3 = request('evidencia3')->store();
+            $foto3 = request('evidencia3')->store('public');
         }
         if(request('firma')){
-            $firma = request('firma')->store();
+            $firma = request('firma')->store('public');
         }
 
 
@@ -663,22 +666,53 @@ class Controlador extends Controller
         $fvu->operador = request('operador');
         $fvu->placas_unidad = request('placas_transporte');
         $fvu->placas_caja = request('placas_caja');
+        $fvu->estructura_transporte = request('vehiculo');
+        $fvu->estructura_contenedor = request('estructura_contenedor');
+        $fvu->piso = request('piso');
+        $fvu->puertas = request('puertas');
+        $fvu->paredes = request('paredes');
+        $fvu->techo = request('techo');
+        $fvu->materia_desconocida = request('materia_desconocida');
+        $fvu->plaga = request('plaga');
+        $fvu->limpieza = request('limpieza');
+        $fvu->olores_desconocidos = request('olores_raros');
+        $fvu->filtraciones = request('filtraciones');
+        $fvu->certificado_fumigacion = request('fumigacion');
+        $fvu->libre_basura = request('libre_basura');
+        $fvu->vidrios_estrellados = request('vidrios_estrellados');
+        $fvu->sanitizacion_llantas = request('sanitizacion_llantas');
+        $fvu->firma_operador = $firma;
+        $fvu->dictamen_final = request('dictamen_final');
+        $fvu->usuario_logeado = request('usuario_logeado');
+        $fvu->observaciones = request('observaciones');
+        $fvu->evidencia1 = $foto1;
+        $fvu->evidencia2 = $foto2;
+        $fvu->evidencia3 = $foto3;
 
-
-
-
-
-
-
-
-        return request();
-
-
+        $fvu->save();
         
+
+
+        return redirect()->route('user.perfil')->with("agregado", "El formato $folio fue agregado con exito!");
+
+
 
 
     }
 
+
+
+    public function fvu_tabla(){
+        $planta = Auth::user()->planta;
+        $fvu = DB::select("SELECT*FROM fvu WHERE planta LIKE $planta  ORDER by created_at DESC");
+        return view('user.tabla_fvu_llenos', compact('fvu'));
+    }
+
+
+
+    public function fvu_lleno(Fvu $fvu){
+        return view('user.fvu_lleno', compact('fvu'));
+    }
 
 
 }

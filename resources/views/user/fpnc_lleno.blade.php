@@ -124,7 +124,8 @@
 <!-- Proveedor, producto y presentación -->
 <div class="container mt-4">
     <div class="row border p-4 d-flex justify-content-center">
-        <div class="col-sm-12 col-md-12 col-lg-4 mt-2">
+
+        <div class="col-sm-12 col-md-12 col-lg-3 mt-2">
             <div class="row">
                 <div class="col-4">
                     <span class="fw-bold">Proveedor: </span>
@@ -134,7 +135,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-4 mt-2">
+
+        <div class="col-sm-12 col-md-12 col-lg-3 mt-2">
             <div class="row">
                 <div class="col-3">
                     <span class="fw-bold">Producto: </span>
@@ -144,6 +146,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-sm-12 col-md-12 col-lg-4 mt-2">
             <div class="row">
                 <div class="col-4">
@@ -154,6 +157,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-2 mt-2">
+            <div class="row">
+                <div class="col-4">
+                    <span class="fw-bold">Planta: </span>
+                </div>
+                <div class="col-6">
+                    <span>{{$fpnc->planta}}</span>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 

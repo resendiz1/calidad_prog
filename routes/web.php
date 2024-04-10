@@ -87,6 +87,8 @@ Route::get('user/fpnc/{fpnc}/lleno', [Controlador::class, 'fpnc_lleno'])->name('
 Route::get('/user/fvu', [Controlador::class, 'fvu_rellenar'])->name('fvu.rellenar');
 
 Route::post('/user/fvu/post', [Controlador::class, 'fvu_agregar'])->name('fvu.agregar');
+Route::get('/user/fvu/tabla', [Controlador::class, 'fvu_tabla'])->name('fvu.tabla');
+Route::get('/user/fvu/{fvu}/fvu_lleno', [Controlador::class, 'fvu_lleno'])->name('fvu.lleno');
 
 
 Route::post('/user', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');

@@ -18,33 +18,43 @@
     <div class="row">
         <div class="col-12 bg-light p-4">
 
-        @forelse ($fpnc as $ifpnc)
+        @forelse ($fvu as $ifvu)
                
-                <a href="{{route('fpnc.lleno', $ifpnc->id)}}">
+                <a href="{{route('fvu.lleno', $ifvu->id)}}">
                     <div class="row p-3 resizeable-table mt-1"> 
+
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
                             <b>Folio: </b> <br>
-                            <span class="fw-bold text-danger">{{$ifpnc->folio}}</span>
+                            <span class="fw-bold text-danger">{{$ifvu->folio}}</span>
                         </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <b>Producto: </b> <br>
-                            <span>{{$ifpnc->producto}}</span>
-                        </div>
-                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <b>Proveedor: </b> <br>
-                            <span>{{$ifpnc->proveedor}}</span>
-                        </div>
+
                         <div class=" col-sm-6 col-md-6 col-lg-3 p-2 border-start">
-                          <b>Realizo: </b> <br>
-                          <span>{{$ifpnc->usuario_logeado}}</span>
+                            <b>Fecha: </b> <br>
+                            <span>{{$ifvu->fecha}}</span>
                         </div>
+
                         <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
-                            <b>Proveedor: </b> <br>
-                            <span class="fw-bold">
-                                
-                                {{$ifpnc->proveedor}}
-                            </span>
-                          </div>
+                            <b>Estructura: </b> <br>
+                            <span>{{$ifvu->estructura_transporte}}</span>
+                        </div>
+
+                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+                          <b>Contenedor: </b> <br>
+                          <span>{{$ifvu->estructura_contenedor}}</span>
+                        </div>
+
+                        <div class=" col-sm-6 col-md-6 col-lg-2 p-2 border-start">
+                            <b>Dictamen: </b> <br>
+
+                                @if ($ifvu->dictamen_final == 'LIBERADO' )
+                                    <span class="text-success fw-bold" >{{$ifvu->dictamen_final}}</span>
+                                @else
+                                     <span class="text-danger fw-bold" >{{$ifvu->dictamen_final}}</span>
+                                @endif
+
+
+
+                        </div>
                     </div>
                 </a>
 

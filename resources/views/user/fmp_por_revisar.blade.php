@@ -614,9 +614,21 @@
         <div class="col-6 text-center mt-4">
           <h6 class="mt-3">DICTAMEN FINAL</h6>
         </div>
+
+        @if ($fmp->dictamen_final == 'RECHAZADO')
+          <div class="col-6 text-center mt-4 bg-danger text-white">
+              <h6 class="m-3">
+                <i class="fa fa-square-xmark" ></i>
+                {{$fmp->dictamen_final}}
+              </h6>
+          </div>
+        @else
         <div class="col-6 text-center mt-4 bg-success text-white">
-            <h6 class="m-3">{{$fmp->dictamen_final}}</h6>
+          <h6 class="m-3">{{$fmp->dictamen_final}}</h6>
         </div>
+            
+        @endif
+
       </div>
 
     </div>

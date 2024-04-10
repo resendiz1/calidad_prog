@@ -63,7 +63,7 @@ return new class extends Migration
             $table->string('superviso_muestreo');
             $table->string('usuario_logeado');
             $table->string('dictamen_final');
-            $table->string('fpnc_lleno')->nullable();
+            $table->string('fpnc_lleno')->default('no')->nullable();
             $table->string('observaciones_realizador')->nullable();
              //datos extras
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('fpnc', function (Blueprint $table) {
             $table->id();
             $table->string('folio');
+            $table->string('planta');
             $table->string('fecha');
             $table->string('folio_fmp');  //Va ligado al folio del formato de materia prima
             $table->string('materia');

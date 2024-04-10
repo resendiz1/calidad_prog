@@ -4,8 +4,7 @@
 @section('title', 'FO/GP/CC/070/05')
     
 
-<form action="{{route('fvu.agregar')}}" enctype="multipart/form-data" method="POST">
-    @csrf
+
         <!-- contenedor de todo -->
         <div class="container bg-white p-5 sombra mt-2">
 
@@ -67,9 +66,7 @@
                         <span class="centrar-verticalmente h6">Planta:</span>
                     </div>       
                     <div class=" col-auto bg-white mt-1">
-                        <h6 class="mt-2">{{Auth::user()->planta}}</h6>
-                        <input type="hidden" name="planta" value="{{Auth::user()->planta}}">
-                        <input type="hidden" name="usuario_logeado" value="{{Auth::user()->nombre_completo}}">
+                        <h6 class="mt-2">{{$fvu->planta}}</h6>
                     </div>
                     </div>
                     
@@ -78,8 +75,7 @@
                         <span class="centrar-verticalmente h6">Fecha:</span>
                     </div>       
                     <div class="col-auto bg-white mt-1">
-                        <span class="font-weight-bold">{{$fecha}}</span>
-                        <input type="hidden" value="{{$fecha}}" name="fecha" >
+                        <span class="font-weight-bold">{{$fvu->fecha}}</span>
                     </div>
                 </div>
             
@@ -96,10 +92,7 @@
                     <span class="centrar-verticalmente h6">Folio:</span>
                     </div>       
                     <div class="col-auto bg-white mt-1">
-                    <span class="text-danger font-weight-bold h6">
-                        <i class="fa fa-lock"></i>
-                        Se generara cuando se guarde el documento
-                    </span>
+                    <span class="text-danger font-weight-bold h6">{{$fvu->folio}}</span>
                     </div>
                 </div>
                 
@@ -107,9 +100,8 @@
                     <div class="col-auto">
                         <span class="centrar-verticalmente h6">Hora de recepción:</span>
                     </div>       
-                    <div class="col-auto bg-white">
-                        <input type="time" name="hora" class="form-control mt-2" value="{{old('hora')}}">
-                        {!!$errors->first('hora', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
+                    <div class="col-auto bg-white mt-1">
+                        <span class="fw-bold ">{{$fvu->hora}}</span>
                     </div>
                 </dv>      
                 </div>
@@ -140,32 +132,23 @@
                         <h6 class="mt-1">PROVEEDOR / CLIENTE</h6>
                     </div>
             
-                    <div class="col-10 p-0">
-                        <select class="text-left form-select form-control mt-1" name="propietario">
-                        <option value="Roberto Beristain">Roberto Beristain</option>
-                        <option value="PROMEXA">PROMEXA</option>
-                        </select>
+                    <div class="col-10 p-2">
+                        <h5>{{$fvu->propietario}}</h5>
                     </div>
                     <div class="col-10 mt-3 border fondo-titulos border border-gray">
                         <h6 class="mt-1">LINEA TRANSPORTISTA</h6>
                     </div>
                     
-                    <div class="col-10 text-left p-0">
-                        <select class="text-left form-select form-control mt-2" name="linea_transportista">
-                        <option value="Tinisa">Tinisa</option>
-                        <option value="SCP">SCP</option>
-                        <option value="villaueva">villaueva</option>
-                        <option value="BMER">BMER</option>
-                        </select>
+                    <div class="col-10 text-left p-2">
+                        <h5>{{$fvu->linea_transportista}}</h5>
                     </div>
             
                     <div class="col-10 fondo-titulos mt-3">
                         <h6 class="mt-1">NÚMERO DE EMBARQUE</h6>
                     </div>
             
-                    <div class="col-10 p-0">
-                        <input type="text" class="form-control mt-1" name="embarque" value="{{old('embarque')}}">
-                        {!!$errors->first('embarque', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
+                    <div class="col-10 p-2">
+                        <h6>{{$fvu->numero_embarque}}</h6>
                     </div>
             
                     </div>
@@ -186,24 +169,20 @@
                         <h6 class="mt-1">OPERADOR</h6>
                     </div>
             
-                    <div class="col-10 p-0">
-                        <input type="text" class="form-control mt-1" autocomplete="on" name="operador" value="{{old('operador')}}">
-                        {!!$errors->first('operador', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
+                    <div class="col-10 p-2">
+                        <h5>{{$fvu->operador}}</h5>
                     </div>
                     <div class="col-10 p-0 fondo-titulos mt-3">        
                         <h6 class="mt-2">PLACAS DEL TRACTO O TORTON :</h6>
                     </div>
-                    <div class="col-10 p-0 mt-1">
-                        <input type="text" class="form-control" name="placas_transporte" value="{{old('placas_transporte')}}">
-                        {!!$errors->first('placas_transporte', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
+                    <div class="col-10 p-2 mt-1">
+                        <h6>{{$fvu->placas_unidad}}</h6>
                     </div>
                     <div class="col-10 p-0 fondo-titulos mt-3">        
                         <h6 class="mt-2">PLACAS CAJA :</h6>
                     </div>
-                    <div class="col-10 p-0 mt-1">
-                        <input type="text" class="form-control" name="placas_caja" value="{{old('placas_caja')}}">
-                        {!!$errors->first('placas_caja', '<small class="text-danger fw-bold badge badge-danger">:message</small>  ')!!}
-
+                    <div class="col-10 p-2 mt-1">
+                        <h6>{{$fvu->placas_caja}}</h6>
                     </div>
                 </div>
             <!-- COLUMNA DE LOS "DATOS DEL TRANSPORTE" -->
@@ -236,20 +215,9 @@
 
                         <div class="row d-flex justify-content-center mt-2">
                             <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Camioneta" name="vehiculo" id="camioneta1" autocomplete="off" checked>
-                                <label class="btn btn-outline-secondary" for="camioneta1">Camioneta</label>
+                                <h5>{{$fvu->estructura_transporte}}</h5>
                             </div>
-                
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Torton" name="vehiculo" id="torton1" autocomplete="off">
-                                <label class="btn btn-outline-secondary" for="torton1">Torton</label>
-                            </div>
-                        
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Trailer" name="vehiculo" id="trailer1" autocomplete="off">
-                                <label class="btn btn-outline-secondary" for="trailer1">Trailer</label>
-                            </div>
-                            
+                                           
                         </div>
                     </div>
 
@@ -264,26 +232,11 @@
                         </div>
 
                         <div class="row d-flex justify-content-center">
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Redilas" name="estructura_contenedor" id="redilas1" autocomplete="off" checked>
-                                <label class="btn btn-outline-secondary" for="redilas1">Redilas</label>            
-                            </div>
-                
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Caja Seca" name="estructura_contenedor" id="caja_seca1" autocomplete="off">
-                                <label class="btn btn-outline-secondary" for="caja_seca1">Caja Seca</label>      
-                            </div>
-                        
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Gondola" name="estructura_contenedor" id="gondola1" autocomplete="off">
-                                <label class="btn btn-outline-secondary" for="gondola1">Gondola</label>    
-                            </div>
-                
-                            <div class="col-auto m-2 ">
-                                <input type="radio" class="btn-check" value="Plataforma" name="estructura_contenedor" id="plataforma" autocomplete="off">
-                                <label class="btn btn-outline-secondary" for="plataforma">Plataforma</label>    
-                            </div>
 
+                            <div class="col-auto m-2 ">
+                                <h5>{{$fvu->estructura_contenedor}}</h5>
+                            </div>
+                
                         </div>
                     </div>  
                     
@@ -309,78 +262,51 @@
             
                 <div class="row mt-4">  <!--row de los criterios de verificacion interna -->
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >PISO</label>
-                        <select class="form-select form-control-lg" name="piso" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->piso}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >PUERTAS</label>
-                        <select class="form-select form-control-lg" name="puertas" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->puertas}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >PAREDES</label>
-                        <select class="form-select form-control-lg" name="paredes" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->paredes}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >TECHO</label>
-                        <select class="form-select form-control-lg" name="techo" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->techo}}</h5>
                     </div>
             
             
-                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4 border">
                         <label for="" class="fw-bold" >MATERIA EXTRAÑA</label>
-                        <select class="form-select form-control-lg" name="materia_desconocida" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->materia_desconocida}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4 border">
                         <label for="" class="fw-bold" >PLAGA</label>
-                        <select class="form-select form-control-lg" name="plaga" aria-label="Default select example">
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <h5>{{$fvu->plaga}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >LIMPIEZA</label>
-                        <select class="form-select form-control-lg" name="limpieza" aria-label="Default select example">
-                            <option value="SI">SI CUMPLE</option>
-                            <option value="NO">NO CUMPLE</option>
-                        </select>
+                        <h5>{{$fvu->limpieza}}</h5>
                     </div>
             
             
-                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mt-4 border">
                         <label for="" class="fw-bold" >OLORES EXTRAÑOS</label>
-                        <select class="form-select form-control-lg" name="olores_raros" aria-label="Default select example">
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <h5>{{$fvu->olores_desconocidos}}</h5>
                     </div>
             
-                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4">
+                    <div class="col-sm-12 col-md-4 col-lg-2 mt-4 border">
                         <label for="" class="fw-bold" >FILTRACIONES</label>
-                        <select class="form-select form-control-lg" name="filtraciones" aria-label="Default select example">
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <h5>{{$fvu->filtraciones}}</h5>
                     </div>
             
                 </div> <!--row de los criterios de verificacion interna -->
@@ -403,34 +329,22 @@
             
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                             <label for="" class="fw-bold" >CERTIFICADOS DE FUMIGACIÓN Y SANITIZACIÓN</label>
-                            <select class="form-select form-control-lg" name="fumigacion" aria-label="Default select example">
-                                <option value="SI">SI CUMPLE</option>
-                                <option value="NO">NO CUMPLE</option>
-                            </select>
+                            <h5>{{$fvu->certificado_fumigacion}}</h5>
                         </div>
                 
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                             <label for="" class="fw-bold" >LIBRE DE BASURA, QUIMICOS U OTROS</label>
-                            <select class="form-select form-control-lg" name="libre_basura" aria-label="Default select example">
-                                <option value="SI">SI CUMPLE</option>
-                                <option value="NO">NO CUMPLE</option>
-                            </select>
+                            <h5>{{$fvu->libre_basura}}</h5>
                         </div>  
                         
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                             <label for="" class="fw-bold" >VIDRIOS ESTRELLADOS</label>
-                            <select class="form-select form-control-lg" name="vidrios_estrellados" aria-label="Default select example">
-                                <option value="SI">SI</option>
-                                <option value="NO">NO</option>
-                            </select>
+                            <h5>{{$fvu->vidrios_estrellados}}</h5>
                         </div>  
                 
                         <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                             <label for="" class="fw-bold" >SANITIZACIÓN LLANTAS Y CHASIS ANTES DE INGRESAR</label>
-                            <select class="form-select form-control-lg" name="sanitizacion_llantas" aria-label="Default select example">
-                                <option value="SI CUMPLE">SI CUMPLE</option>
-                                <option value="NO CUMPLE">NO CUMPLE</option>
-                            </select>
+                            <h5>{{$fvu->sanitizacion_llantas}}</h5>
                         </div>  
             
             
@@ -444,12 +358,22 @@
                                 <h4>EN CASO DE ALGUN INCUMPLIMIENTO </h4>
                                 <h6>EL OPERADOR SE ATRIBUYE EL GARANTIZAR LA INTEGRIDAD DE LA CARGA</h6>
                             </div>
+
                             <div class="col-12 p-2 border border border-2" id="firma_preview">
-                            <img src="https://cdn-icons-png.flaticon.com/512/104/104645.png" class="img-fluid w-50" alt="">
+                                 <img src="{{Storage::url($fvu->firma_operador)}}" alt="Firma {{$fvu->operador}}" class="img-fluid w-50" alt="" data-bs-toggle="modal" data-bs-target="#sign{{$fvu->folio}}">
                             </div>
-                            <div class="col-12 p-2 border border border-2">
-                            <input type="file" class="form-control" name="firma" id="firma">
+
+                            {{-- modal de la imagen 3 --}}
+                            <div class="modal fade" id="sign{{$fvu->folio}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content ">
+                                        <img src="{{Storage::url($fvu->firma_operador)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    </div>
+                                </div>
                             </div>
+                            {{-- modal de la imagen 3 --}}
+
+
                         </div>
                     </div>
             
@@ -472,18 +396,23 @@
             
             
                 <div class="row mt-3">
-                    <div class="col-sm-12 col-md-12 col-lg-2">
+                    <div class="col-sm-12 col-md-12 col-lg-4 border text-center">
                     <label for="" class="fw-bold">DICTAMEN FINAL: <mark> {{Auth::user()->nombre_completo}} </mark></label>
-            
-                    <select class="form-select form-control-lg" name="dictamen_final" aria-label="Default select example">
-                        <option value="LIBERADO">LIBERADO</option>
-                        <option value="RECHAZADO">RECHAZADO</option>
-                    </select>
+                    <br> <br>
+                        @if ($fvu->dictamen_final= 'LIBERADO')
+                        
+                        <h5 class="mx-3 text-white bg-success py-1 px-2"><i class="fa fa-circle-check"></i> {{$fvu->dictamen_final}}</h5>
+                            
+                        @else
+                        <h5 class="mx-3  text-danger"><i class="fa fa-circle-xmark"></i>{{$fvu->dictamen_final}}</h5>
+                            
+                        @endif
+
                     </div>
             
-                    <div class="col-sm-12 col-md-12 col-lg-10 mt-2">
-                        <label for="" class="fw-bold">OBSERVACIONES </label>
-                            <textarea class="form-control w-100" name="observaciones">{{old('observaciones')}}</textarea>
+                    <div class="col-sm-12 col-md-12 col-lg-8  border">
+                         <label for="" class="fw-bold">OBSERVACIONES; </label>
+                        <p>{{$fvu->observaciones}}</p>
                     </div>
             
                 </div>
@@ -507,40 +436,70 @@
             <div class="row justify-content-around p-3">
             
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
-                <div class="row">
-
-                    <div class="col-12" id="imagenPrevia">
-                    <img src="{{asset('img/images.png')}}" alt="">
+                    <div class="row">
+                        <div class="col-12" id="imagenPrevia">
+                             <img src="{{Storage::url($fvu->evidencia1)}}" class="img-fluid" alt="Evidencia 1" data-bs-toggle="modal" data-bs-target="#b{{$fvu->folio}}">
+                        </div>
                     </div>
+                </div>
 
-                    <div class="col-12">
-                    <input type="file" name="evidencia1" id="evidencia1" class="form-control">
+                {{-- modal de la imagen 3 --}}
+                <div class="modal fade" id="b{{$fvu->folio}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content ">
+                            <img src="{{Storage::url($fvu->evidencia1)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                         </div>
                     </div>
+                </div>
+                {{-- modal de la imagen 3 --}}
 
-                </div>
-                </div>
+
+
+
             
+
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
-                <div class="row">
-                    <div class="col-12" id="imagenPrevia2">
-                    <img src="{{asset('img/images.png')}}" alt="">
-                    </div>
-                    <div class="col-12">
-                    <input type="file" name="evidencia2" id="evidencia2" class="form-control">
+                    <div class="row">
+                        <div class="col-12" id="imagenPrevia2">
+                            <img src="{{Storage::url($fvu->evidencia2)}}" class="img-fluid" alt="Evidencia 2" data-bs-toggle="modal" data-bs-target="#a{{$fvu->folio}}">
+                        </div>
+                     </div>
+                </div>
+
+
+                {{-- modal de la imagen 3 --}}
+                <div class="modal fade" id="a{{$fvu->folio}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content ">
+                            <img src="{{Storage::url($fvu->evidencia2)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                         </div>
                     </div>
                 </div>
-                </div>
+                {{-- modal de la imagen 3 --}}
+
+
+
+
             
+
+
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
-                <div class="row">
-                    <div class="col-12" id="imagenPrevia3">
-                    <img src="{{asset('img/images.png')}}" alt="">
-                    </div>
-                    <div class="col-12">
-                    <input type="file" name="evidencia3" id="evidencia3" class="form-control">
+                     <div class="row">
+                        <div class="col-12 " id="imagenPrevia3">
+                            <img src="{{Storage::url($fvu->evidencia3)}}" class="img-fluid" alt="Evidencia 3" data-bs-toggle="modal" data-bs-target="#e{{$fvu->folio}}">
+                        </div>
+                     </div>
+                </div>
+
+                {{-- modal de la imagen 3 --}}
+                <div class="modal fade" id="e{{$fvu->folio}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content ">
+                            <img src="{{Storage::url($fvu->evidencia3)}}" class="img-fluid"  alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                         </div>
                     </div>
                 </div>
-                </div>
+                {{-- modal de la imagen 3 --}}
             
             
             </div>
@@ -548,115 +507,10 @@
             
             
             </div> <!-- EVIDENCIAS DEL LUGRA DONDE SE ENCONTRO LA INCONFORMIDAD -->
-            
-            
-            
-            <div class="container bg-white p-4">
-            <div class="row">
-                <div class="col-12">
-                <button class="btn btn-success w-100"> <h2> Guardar </h2> </button>
-                </div>
-            </div>
-            </div>
-            
+                       
             
         </div>
             <!-- contenedor de todo -->
-
-
-
-
-
-
-
-
-
-
-
-</form>
-
-
-
-
-
-
-<script>
-
-    document.getElementById('evidencia1').addEventListener('change', function(){
-        var file = this.files[0];
-
-        if(file){
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                var preview = document.getElementById('imagenPrevia');
-                preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-            }
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-
-
-
-
-    document.getElementById('evidencia2').addEventListener('change', function(){
-        var file = this.files[0];
-
-        if(file){
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                var preview = document.getElementById('imagenPrevia2');
-                preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-            }
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-
-
-
-    document.getElementById('evidencia3').addEventListener('change', function(){
-        var file = this.files[0];
-
-        if(file){
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                var preview = document.getElementById('imagenPrevia3');
-                preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-            }
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-
-
-    document.getElementById('firma').addEventListener('change', function(){
-        var file = this.files[0];
-
-        if(file){
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                var preview = document.getElementById('firma_preview');
-                preview.innerHTML = '<img src="' + e.target.result + '" alt="Vista previa de imagen" class="img-fluid" >';
-            }
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-
-
-
-</script>
-
-
 
 
 

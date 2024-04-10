@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('fvu', function (Blueprint $table) {
             $table->id();
             $table->string('planta');
-            $table->string('folio_p1')->nullable('0');
-            $table->string('folio_p2')->nullable('0');
-            $table->string('folio_p3')->nullable('0');
+            $table->string('folio_p1')->default('0')->nullable();
+            $table->string('folio_p2')->default('0')->nullable();
+            $table->string('folio_p3')->default('0')->nullable();
             $table->string('folio');
             $table->string('fecha');
             $table->string('hora');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('operador');
             $table->string('placas_unidad');
             $table->string('placas_caja');
-            $table->string('estractura_transporte');
+            $table->string('estructura_transporte');
             $table->string('estructura_contenedor');
             // verificacio interna
             $table->string('piso');

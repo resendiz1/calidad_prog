@@ -18,7 +18,6 @@
 
 @if (Auth::user()->area == 'CALIDAD')
 
-
 {{-- SECCION DEL FORMATO DE MATERIA PRIMA --}}   
     <div class="col-sm-12 col-md-6 col-lg-4 m-3 border border-5 fondo p-3 mt-5">
         <div class="row">
@@ -124,7 +123,7 @@
 
 
 {{-- SECCION DEL FORMATO DE VERIFICACION DE UNIDADES --}} 
-<div class="col-sm-12 col-md-6 col-lg-4 m-3 border border-5 fondo p-3 mt-5">
+<div class="col-sm-12 col-md-6 col-lg-4 m-3 border border-5 fondo p-3 mt-5 ">
     <div class="row">
         <div class="col-12 text-center">
             <h6>FORMATO DE VERIFICACIÓN DE UNIDADES </h6>
@@ -154,13 +153,13 @@
 
     {{-- card generados  formatos V U --}}
             <div class="col-sm-12 col-lg-6 sombra btn resizeable-div   border border-5 mx-1 mt-4">
-                <a href="#">
+                <a href="{{route('fvu.tabla')}}">
                     <div class="row">
                         <div class="col-12">
-                            <h6 class="mx-auto mt-3"> VER VERIFICACIÓN DE UNIDADES</h6>
+                            <h6 class="mx-auto mt-3"> VER FORMATOS VERIFICACIÓN DE UNIDADES</h6>
                         </div>
                         <div class="col-12">
-                            <i class="fa fa-pencil mt-2 fa-2x"></i>
+                            <i class="fa fa-eye mt-2 fa-2x"></i>
                         </div>
                     </div>
                 </a>
@@ -184,7 +183,7 @@
 
     @else    
 
-        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  border border-5 ">
+        <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  border border-5 mt-5">
             <div class="row">
                 <a href="{{route('pendientes.revisar')}}">
                     <div class="col-12">
@@ -227,7 +226,26 @@
 
             setTimeout(function(){
                 window.location.replace(window.location.href);
-            }, 3500);
+            }, 2500);
+         });
+        
+    </script>
+ 
+@endif
+
+{{-- alertas de que el usurio se agrego con exito o que hubo un error se desaparecen en 3 segundos--}}
+@if (session('agregado'))
+    <script>
+         window.addEventListener('load', function(){
+            Swal.fire({
+                title: "Hecho",
+                text:  "{{session('agregado')}}",
+                icon: "success"
+            });
+
+            setTimeout(function(){
+                window.location.replace(window.location.href);
+            }, 2500);
          });
         
     </script>

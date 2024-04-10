@@ -66,6 +66,7 @@
                     <span><b> FOLIO DE:  <i> FO/GP/CC/070/01</i> </b> </span> 
                     <span class="text-danger fw-bold mx-2">{{$fmp->folio}}</span>
                     <input type="hidden" name="folio_fmp" value="{{$fmp->folio}}">
+                    <input type="hidden" name="planta" value="{{Auth::user()->planta}}">
                 </div>
             </div>
         </div>

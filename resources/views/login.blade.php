@@ -2,6 +2,8 @@
 @section('contenido')
 @section('title', 'Inicio de Sesión')
 
+
+
     <div class="container p-5 mt-5">
         <div class="row mt-5 justify-content-center">
             <div class="col-sm-12 col-md-9 col-lg-5 mt-5 bg-white p-5 border border-5 sombra">
