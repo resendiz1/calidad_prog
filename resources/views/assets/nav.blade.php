@@ -15,6 +15,12 @@
                 <div class="col-12 text-center mb-0">
                     <h6>
                         @if (isset(Auth::user()->nombre_completo))
+                        {{  Auth::user()->nombre_completo}}
+                        @endif
+
+                      
+
+                        @if (isset(Auth::guard()->user))
                             {{  Auth::user()->nombre_completo}}
                         @endif
                     </h6>

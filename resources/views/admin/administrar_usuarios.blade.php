@@ -56,7 +56,7 @@
             @forelse ($resultados as $resultado)
                 
             
-                        <div class="row p-3 resizeable-table mt-2"> 
+                        <div class="row p-3  mt-2"> 
                             <div class="col-sm-12 col-md-6 col-lg-3">
                                 <h6 class="mt-2">{{$resultado->nombre_completo}}</h6>
                             </div>

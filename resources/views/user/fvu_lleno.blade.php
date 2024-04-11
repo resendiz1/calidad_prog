@@ -360,7 +360,7 @@
                             </div>
 
                             <div class="col-12 p-2 border border border-2" id="firma_preview">
-                                 <img src="{{Storage::url($fvu->firma_operador)}}" alt="Firma {{$fvu->operador}}" class="img-fluid w-50" alt="" data-bs-toggle="modal" data-bs-target="#sign{{$fvu->folio}}">
+                                 <img src="{{Storage::url($fvu->firma_operador)}}" alt="Firma {{$fvu->operador}}" class="img-fluid w-50 fotos" alt="" data-bs-toggle="modal" data-bs-target="#sign{{$fvu->folio}}">
                             </div>
 
                             {{-- modal de la imagen 3 --}}
@@ -397,7 +397,7 @@
             
                 <div class="row mt-3">
                     <div class="col-sm-12 col-md-12 col-lg-4 border text-center">
-                    <label for="" class="fw-bold">DICTAMEN FINAL: <mark> {{Auth::user()->nombre_completo}} </mark></label>
+                    <label for="" class="fw-bold">DICTAMEN FINAL: <mark> {{$fvu->usuario_logeado}} </mark></label>
                     <br> <br>
                         @if ($fvu->dictamen_final= 'LIBERADO')
                         
@@ -437,7 +437,7 @@
             
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
                     <div class="row">
-                        <div class="col-12" id="imagenPrevia">
+                        <div class="col-12 fotos" id="imagenPrevia">
                              <img src="{{Storage::url($fvu->evidencia1)}}" class="img-fluid" alt="Evidencia 1" data-bs-toggle="modal" data-bs-target="#b{{$fvu->folio}}">
                         </div>
                     </div>
@@ -460,7 +460,7 @@
 
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
                     <div class="row">
-                        <div class="col-12" id="imagenPrevia2">
+                        <div class="col-12 fotos" id="imagenPrevia2">
                             <img src="{{Storage::url($fvu->evidencia2)}}" class="img-fluid" alt="Evidencia 2" data-bs-toggle="modal" data-bs-target="#a{{$fvu->folio}}">
                         </div>
                      </div>
@@ -485,7 +485,7 @@
 
                 <div class="col-sm-12 col-md-4 col-lg-4 border text-center shadow shadow-sm">
                      <div class="row">
-                        <div class="col-12 " id="imagenPrevia3">
+                        <div class="col-12  fotos" id="imagenPrevia3">
                             <img src="{{Storage::url($fvu->evidencia3)}}" class="img-fluid" alt="Evidencia 3" data-bs-toggle="modal" data-bs-target="#e{{$fvu->folio}}">
                         </div>
                      </div>

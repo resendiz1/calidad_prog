@@ -419,13 +419,51 @@ class Controlador extends Controller
         return view('admin.buscador_fmp', compact('formatos'));
     }
 
+
+
     public function buscados_fmp(){
 
         $query = request('busqueda');
         $formatos = DB::select("SELECT*FROM fmp WHERE proveedor LIKE '%$query%'  OR producto LIKE '%$query%' OR fecha LIKE '%$query%' ");
         return view('admin.buscador_fmp', compact('formatos'));
-
     }
+
+
+    public function busqueda_fpnc(){
+        $formatos = Fpnc::all();
+
+        return view('admin.buscador_fpnc', compact('formatos'));
+    }
+
+
+    public function buscados_fpnc(){
+        $query = request('busqueda');
+        $formatos = DB::select("SELECT*FROM fpnc WHERE proveedor LIKE '%$query%'  OR producto LIKE '%$query%' OR fecha LIKE '%$query%' ");
+        return view('admin.buscador_fpnc', compact('formatos'));
+    }
+
+
+
+    
+
+    public function busqueda_fvu(){
+        $formatos = Fvu::all();
+        return view('admin.buscador_fvu', compact('formatos'));
+    }
+
+    public function buscados_fvu(){
+        $query = request('busqueda');
+        $formatos = DB::select("SELECT*FROM fvu WHERE folio LIKE '%$query%'  OR propietario LIKE '%$query%' OR numero_embarque LIKE '%$query%' ");
+        return view('admin.buscador_fvu', compact('formatos'));
+    }
+
+
+
+
+
+
+
+
 
     public function cerrar_sesion(){
 
@@ -710,9 +748,22 @@ class Controlador extends Controller
 
 
 
+
+
+
     public function fvu_lleno(Fvu $fvu){
         return view('user.fvu_lleno', compact('fvu'));
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }
