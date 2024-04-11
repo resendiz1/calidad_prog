@@ -322,6 +322,7 @@
     <div class="row justify-content-center">
         <div class="col-12 text-center fondo">
             <h4 class="mt-2">Via de notificación</h4>
+            {!!$errors->first('notificacion', '<span class="text-danger fw-bold"> :message </span> '  )!!}
         </div>
     </div>
 

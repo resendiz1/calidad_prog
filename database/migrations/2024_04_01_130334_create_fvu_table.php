@@ -50,6 +50,7 @@ return new class extends Migration
             $table->string('evidencia1')->nullable();
             $table->string('evidencia2')->nullable();
             $table->string('evidencia3')->nullable();
+            $table->string('verifico_almacen')->default('no_verificado')->nullable();
 
             $table->timestamps();
         });

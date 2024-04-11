@@ -360,7 +360,7 @@
     <div class="row mt-4 justify-content-center">
         <div class="col-8 text-center">
 
-            @if ($fpnc->via_notificacion == 'otra')
+            @if ($fpnc->via_notificacion == 'Otra')
                 <h5> {{$fpnc->otra_notificacion}} </h5>
             @else
                 <h5> {{$fpnc->via_notificacion}} </h5>

@@ -102,10 +102,14 @@ Route::get('user/fpnc/{fpnc}/lleno', [Controlador::class, 'fpnc_lleno'])->name('
 
 
 //Rutas del formato de verificacion de vehiculos
-Route::get('/user/fvu', [Controlador::class, 'fvu_rellenar'])->name('fvu.rellenar')->middleware('auth');
+Route::get('/user/fvu/', [Controlador::class, 'fvu_rellenar'])->name('fvu.rellenar')->middleware('auth');
 Route::post('/user/fvu/post', [Controlador::class, 'fvu_agregar'])->name('fvu.agregar')->middleware('auth');
 Route::get('/user/fvu/tabla', [Controlador::class, 'fvu_tabla'])->name('fvu.tabla')->middleware('auth');
 Route::get('/user/fvu/{fvu}/fvu_lleno', [Controlador::class, 'fvu_lleno'])->name('fvu.lleno')->middleware('auth');
+
+
+Route::get('/user/fvu/almacen/pendientes', [Controlador::class, 'fvu_pendientes'])->name('fvu.pendientes');
+
 //Rutas del formato de verificacion de vehiculos
 
 

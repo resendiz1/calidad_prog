@@ -66,7 +66,7 @@
                         <span class="centrar-verticalmente h6">Planta:</span>
                     </div>       
                     <div class=" col-auto bg-white mt-1">
-                        <h6 class="mt-2">{{$fvu->planta}}</h6>
+                        <h6 class="mt-2">No. {{$fvu->planta}}</h6>
                     </div>
                     </div>
                     

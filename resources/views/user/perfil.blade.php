@@ -172,16 +172,9 @@
 {{-- SECCION DEL FORMATO DE VERIFICACION DE UNIDADES --}} 
         
         
-    
-        
-        
-        
-        
+@endif
 
-
-        
-
-    @else    
+@if (Auth::user()->area == 'PRODUCCION' || Auth::user()->area == 'BASCULA' )
 
         <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  border border-5 mt-5">
             <div class="row">
@@ -195,10 +188,26 @@
                 </a>
             </div>
         </div>
-    @endif
-        
-        
+ 
+@endif
 
+
+@if (Auth::user()->area == 'ALMACEN' )    
+
+    <div class="col-sm-12 col-md-3 mt-1 col-lg-3 sombra btn resizeable-div  border border-5 mt-5">
+        <div class="row">
+            <a href="{{route('fvu.pendientes')}}">
+                <div class="col-12">
+                    <p class="mx-auto h5">REVISAR FORMATO DE VERIFICACIÓN DE UNIDADES</p>
+                </div>
+                <div class="col-12">
+                    <i class="fa fa-circle-check mt-3 fa-2x"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+
+@endif
 
 
     </div>

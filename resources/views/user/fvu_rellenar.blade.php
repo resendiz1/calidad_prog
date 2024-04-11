@@ -67,7 +67,7 @@
                         <span class="centrar-verticalmente h6">Planta:</span>
                     </div>       
                     <div class=" col-auto bg-white mt-1">
-                        <h6 class="mt-2">{{Auth::user()->planta}}</h6>
+                        <h6 class="mt-2">No. {{Auth::user()->planta}}</h6>
                         <input type="hidden" name="planta" value="{{Auth::user()->planta}}">
                         <input type="hidden" name="usuario_logeado" value="{{Auth::user()->nombre_completo}}">
                     </div>

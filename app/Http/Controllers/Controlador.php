@@ -444,7 +444,7 @@ class Controlador extends Controller
 
 
 
-    
+
 
     public function busqueda_fvu(){
         $formatos = Fvu::all();
@@ -477,7 +477,7 @@ class Controlador extends Controller
 
     public function tabla_fpnc(){
         $planta = Auth::user()->planta;
-        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' AND fpnc_lleno LIKE 'no' AND planta LIKE $planta ");
+        $fmp = DB::select("SELECT*FROM fmp WHERE dictamen_final LIKE 'RECHAZADO' AND fpnc_lleno LIKE 'no' AND planta LIKE $planta ORDER BY created_at DESC ");
 
         return view('user.tabla_fpnc_pendientes', compact('fmp'));
     }
@@ -504,8 +504,8 @@ class Controlador extends Controller
             'desviacion' => 'required',
             'observaciones' => 'required',
             'recibe_notificacion' => 'required',
-            'emite_notificacion' => 'required'
-
+            'emite_notificacion' => 'required',
+            'notificacion' => 'required'
         ]);
 
 
@@ -527,7 +527,7 @@ class Controlador extends Controller
             $foto3 = request('imagen3')->store('public');
         }
 
-        if(request('notificacion') == 'otra' ){
+        if(request('notificacion') == 'Otra' ){
             $otra_notificacion = request('otra_notificacion');
         }
 
@@ -756,6 +756,11 @@ class Controlador extends Controller
     }
 
 
+    public function fvu_pendientes(){
+        $fvu = DB::select("SELECT*FROM fvu WHERE verifico_almacen LIKE 'no_verificado' ");
+
+        return view('user.tabla_fvu_pendientes', compact('fvu'));
+    }
 
 
 
