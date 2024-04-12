@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-12 text-center p-3">
             <h3 class="fw-bold">FORMATOS DE VERIFICACIÓN DE UNIDADES</h3>
+            <a href="{{route('user.perfil')}}" class="btn btn-success btn-sm">
+                Regresar
+            </a>
         </div>
     </div>
 </div>

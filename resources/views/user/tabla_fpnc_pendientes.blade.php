@@ -6,11 +6,12 @@
     <div class="row">
         <div class="col-12 text-center p-3">
             <h3 class="fw-bold">FORMATOS DE PRODUCTO NO CONFORME PENDIENTES</h3>
+            <a href="{{route('user.perfil')}}" class="btn btn-success btn-sm">
+                Regresar
+            </a>
         </div>
     </div>
 </div>
-
-
 
 
 <!-- PANEL PARA MOSTRAR LA TABLA CON LOS RESULTADOS DE LA BUSQUEDA -->

@@ -2,7 +2,9 @@
 @section('contenido')
 @include('assets.nav')
 @section('title', 'FO/GP/CC/070/05')
-    
+
+
+
 
 <form action="{{route('fvu.agregar')}}" enctype="multipart/form-data" method="POST">
     @csrf
@@ -10,7 +12,8 @@
         <div class="container bg-white p-5 sombra mt-2">
 
             <!-- encabezado -->
-            <div class="container shadow shadow-sm bg-white">
+
+            <div class="container shadow shadow-sm bg-white mt-3">
                 <div class="row border border-5">
                 
                 <div class="col-sm-12 col-md-4  col-lg-4 centrar-verticalmente p-2 mt-2">

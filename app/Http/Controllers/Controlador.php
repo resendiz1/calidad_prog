@@ -505,7 +505,8 @@ class Controlador extends Controller
             'observaciones' => 'required',
             'recibe_notificacion' => 'required',
             'emite_notificacion' => 'required',
-            'notificacion' => 'required'
+            'notificacion' => 'required',
+            'folio_fmp' => 'required|unique:fpnc'
         ]);
 
 

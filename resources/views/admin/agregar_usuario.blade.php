@@ -9,7 +9,7 @@
 <div class="container mt-4">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-12 col-md-8 col-lg-2 text-center">
-            <a href="{{route('admin.view')}}" class="btn btn-dark text-white btn-sm p-2 w-100 fw-bold">Regresar</a>
+            <a href="{{route('lista.usuarios')}}" class="btn btn-success text-white btn-sm p-2 w-100 fw-bold">Regresar</a>
         </div>
     </div>
 </div>

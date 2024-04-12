@@ -25,7 +25,7 @@
                             <div class="input-group-icon">
                                 <span class="input-group-text"> <i class="fa fa-user p-1"></i> </span>
                             </div>
-                            <input type="text" name="email" class="form-control login" aria-describedby="input-group-icon" placeholder="Usuario" autofocus >
+                            <input type="text" name="email" class="form-control login" value="{{old('email')}}" aria-describedby="input-group-icon" placeholder="Usuario" autofocus >
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-lock p-1"></i> </span>
                             </div>
-                            <input type="password" name="password" class="form-control form-control-sm login" aria-describedby="input-group-prepend" placeholder="Contraseña" >
+                            <input type="password" name="password" class="form-control form-control-sm login" value="{{old('password')}}" aria-describedby="input-group-prepend" placeholder="Contraseña" >
                         </div>
                     </div>
                 </div>

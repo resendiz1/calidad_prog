@@ -521,7 +521,7 @@
                             <input type="hidden" name="id" value="{{$fvu->id}}">
                             <input type="hidden" name="usuario_logeado" value="{{Auth::user()->nombre_completo}}">
                             <i class="fa fa-check mx-3"></i>
-                            REVISADO
+                            MARCAR FORMATO COMO REVISADO POR ALMACEN
                         </button>
                     </form>
                 </div>

@@ -11,6 +11,17 @@
 
 <div class="container bg-white  p-5 sombra"> <!--Contenedor de todo -->
 
+    <div class="row">
+        {!!$errors->first('folio_fmp', 
+        ' <div class="col-12 bg-danger text-white text-center"> 
+            <h2>
+                <i class="fa fa-circle-exclamation"></i>
+                NO SE PUEDE GUARDAR EL DOCUMENTO, YA EXISTE UN DOCUMENTO CON ESTE FOLIO
+            </h2> 
+        </div>')!!}
+        
+       
+    </div>
 
 <!-- encabezado -->
 <div class="container shadow shadow-sm">
