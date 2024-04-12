@@ -504,38 +504,37 @@
             
             </div>
             
-            </div> <!-- EVIDENCIAS DEL LUGRA DONDE SE ENCONTRO LA INCONFORMIDAD -->
-
-
-            {{-- marca de que almacen ya reviso el formato --}}
-            <div class="container mt-5">
-                <div class="row justify-content-center">
-
-
-                    @if ($fvu->verifico_almacen == 'no_verificado')
-                        <div class="col-3 text-white text-center" style="background-color: maroon">
-                            <h5 class="fw-bold">
-                                <i class="fa fa-circle-exclamation mt-1 mx-2"></i>
-                                NO VERIFICADO
-                            </h5>
-                        </div>
-
-                    @else
-
-                    <div class="col-3 text-white text-center bg-success">
-                        <h5 class="fw-bold">
-                            <i class="fa fa-circle-check mt-1"></i>
-                           VERIFICADO
-                        </h5>
-                    </div>
-                    @endif
-
-
-                </div>
-            </div>                       
-            {{-- marca de que almacen ya reviso el formato --}}
-
             
+            
+            </div> <!-- EVIDENCIAS DEL LUGRA DONDE SE ENCONTRO LA INCONFORMIDAD -->
+                
+
+
+        {{-- formulario de visto --}}
+        
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-5">
+                    <form action="{{route('almacen.fvu.verificar')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-success w-100">
+                            <input type="hidden" name="id" value="{{$fvu->id}}">
+                            <input type="hidden" name="usuario_logeado" value="{{Auth::user()->nombre_completo}}">
+                            <i class="fa fa-check mx-3"></i>
+                            REVISADO
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{-- formulario de visto --}}
+
+
+
+
         </div>
             <!-- contenedor de todo -->
 

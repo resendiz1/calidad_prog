@@ -764,6 +764,25 @@ class Controlador extends Controller
 
 
 
+    public function fvu_verificar(Fvu $fvu){
+
+        return view('user.fvu_verificar_almacen', compact('fvu'));
+    }
+
+    public function almacen_fvu_verificar(){
+        
+        $fvu = Fvu::findOrFail(request('id'));
+        $fvu->verifico_almacen = request('usuario_logeado');
+        $fvu->save();
+
+        return redirect()->route('fvu.pendientes')->with('verificado', 'El documento se guardo con éxito');
+
+
+
+    }
+
+
+
 
 
 

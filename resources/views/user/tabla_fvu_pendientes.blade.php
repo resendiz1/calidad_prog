@@ -95,6 +95,25 @@
 
 
 
+{{-- alertas de que el usurio se agrego con exito o que hubo un error se desaparecen en 3 segundos--}}
+@if (session('verificado'))
+    <script>
+         window.addEventListener('load', function(){
+            Swal.fire({
+                title: "Hecho",
+                text:  "{{session('verificado')}}",
+                icon: "success"
+            });
+
+            setTimeout(function(){
+                window.location.replace(window.location.href);
+            }, 2500);
+         });
+        
+    </script>
+ 
+@endif
+
 
 
 @endsection

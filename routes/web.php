@@ -108,7 +108,12 @@ Route::get('/user/fvu/tabla', [Controlador::class, 'fvu_tabla'])->name('fvu.tabl
 Route::get('/user/fvu/{fvu}/fvu_lleno', [Controlador::class, 'fvu_lleno'])->name('fvu.lleno')->middleware('auth');
 
 
+
+
 Route::get('/user/fvu/almacen/pendientes', [Controlador::class, 'fvu_pendientes'])->name('fvu.pendientes');
+Route::get('/users/fvu/almace/pendientes/{fvu}/verificar', [Controlador::class, 'fvu_verificar'])->name('fvu.verificar');
+
+Route::post('/user/fvu/almacen/verificado/post',[Controlador::class, 'almacen_fvu_verificar'])->name('almacen.fvu.verificar');
 
 //Rutas del formato de verificacion de vehiculos
 

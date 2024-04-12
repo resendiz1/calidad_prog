@@ -24,16 +24,24 @@
         <!-- INPUT PARA INGRESAR DATOS PARA BUSCAR -->
             <div class="container mt-5 bg-white p-4 border border-5 sombra">
                 <div class="row">
+
                     <div class="col-12">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col-sm-12 col-md-7 col-lg-2 mt-3">
                                 <input type="text" id="query" name="query" class="form-control" autofocus >
                             </div>
                             <div class="col-sm-12 col-md-5 col-lg-2 d-flex align-items-center mt-3">
                                 <button class="btn btn-success btn-sm w-100 "> <i class="fa fa-search"></i> Buscar</button>
                             </div>
+                            <div class=" col-sm-12 col-md-12 col-lg-7"></div>
+                            <div class=" col-sm-12 col-md-8 col-lg-1 mt-3 text-center">
+                                <a href="{{route('admin.add_usuario')}}" class="btn btn-success w-100" id="add_users"  data-toggle="tooltip" data-placement="top" title="Agregar usuarios">
+                                    <i class="fa fa-user-plus"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         <!-- INPUT PARA INGRESAR DATOS PARA BUSCAR -->
@@ -138,6 +146,12 @@
             }, 2000);
          });
         
+
+       $('#add_users').tooltip(
+
+       ) 
+
+
     </script>
 @endif
 

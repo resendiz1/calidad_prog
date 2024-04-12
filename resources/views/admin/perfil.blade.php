@@ -129,7 +129,7 @@
 
 
         {{-- card documentos generados formato materia prima --}}
-        <div class="col-sm-12 col-lg-6 sombra btn resizeable-div  border border-5  mt-3">
+        {{-- <div class="col-sm-12 col-lg-6 sombra btn resizeable-div  border border-5  mt-3">
             <a href="{{route('admin.add_usuario')}}">
                 <div class="row">
                     <div class="col-12 mt-3">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div> --}}
           {{-- card documentos generados formato materia prima --}}            
 
 
