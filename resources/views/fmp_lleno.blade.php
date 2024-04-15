@@ -173,7 +173,7 @@
         </div>
 
         <div class="col-10 ">
-            <h6 class="m-2">{{$fmp->nombre_operador}}</h6>
+            <h6 class="mt-2">{{$fmp->nombre_operador}}</h6>
         </div>
 
         <div class="col-10  fondo-titulos mt-3">        

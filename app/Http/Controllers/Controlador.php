@@ -784,6 +784,12 @@ class Controlador extends Controller
 
 
 
+    public function evaluacion_proveedores(){
+        return view('admin.evaluacion_proveedores');
+    }
+
+
+
 
 
 

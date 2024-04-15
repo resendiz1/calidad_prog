@@ -128,6 +128,24 @@
 
 
 
+        {{-- card rellenar  formatos materia prima --}}
+        <div class="col-sm-12 col-lg-6 sombra btn resizeable-div   border border-5 m-2">
+            <a href="{{route('evaluacion.proveedores')}}">
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="mx-auto mt-3">EVALUACIÓN DE PROVEEDORES</h6>
+                    </div>
+                    <div class="col-12">
+                        <i class="fa fa-chart-simple fa-2x mt-2"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{-- card rellenar  formatos materia prima --}}        
+
+
+
+
         {{-- card documentos generados formato materia prima --}}
         {{-- <div class="col-sm-12 col-lg-6 sombra btn resizeable-div  border border-5  mt-3">
             <a href="{{route('admin.add_usuario')}}">

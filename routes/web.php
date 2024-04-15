@@ -119,6 +119,15 @@ Route::post('/user/fvu/almacen/verificado/post',[Controlador::class, 'almacen_fv
 
 
 
+
+// Evaliacion de proveedores
+Route::get('/admin/evaluacion_proveedores', [Controlador::class, 'evaluacion_proveedores'])->name('evaluacion.proveedores');
+
+
+
+
+
+
 Route::post('/user', [Controlador::class, 'cerrar_sesion'])->name('cerrar.sesion');
 Route::post('/', [Controlador::class, 'login'])->name('login.intro');
 Route::view('/', 'login')->name('login');
